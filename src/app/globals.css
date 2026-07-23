@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* ==========================================================================
+   GLOBAL PREMIUM LIGHT THEME OVERRIDES
+   Redefines slate panels, text ranges, borders, and charts under class .light
+   ========================================================================== */
+
+.light {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Root background elements */
+.light .bg-slate-950,
+.light [class*="bg-slate-950"] {
+  background-color: #f8fafc !important;
+}
+
+/* Card components & layouts using attribute matching to bypass PostCSS build errors */
+.light [class*="bg-slate-900"] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.08), 0 1px 3px rgba(99, 102, 241, 0.02) !important;
+}
+
+.light .bg-slate-950\/40 {
+  background-color: rgba(241, 245, 249, 0.8) !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light .bg-slate-950\/60 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.05) !important;
+}
+
+/* Form Inputs & Options */
+.light select,
+.light input,
+.light textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Clean disabled button state - no more black buttons in light mode */
+.light button:disabled,
+.light button[disabled] {
+  background-color: #e2e8f0 !important;
+  border-color: #e2e8f0 !important;
+  color: #94a3b8 !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+/* Border overrides */
+.light .border-slate-800 {
+  border-color: #e2e8f0 !important;
+}
+
+.light .border-slate-800\/80 {
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+.light .border-slate-850 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Text color overrides */
+.light .text-slate-100 {
+  color: #0f172a !important;
+}
+
+.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+.light .text-slate-350,
+.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+.light .text-slate-400 {
+  color: #475569 !important;
+}
+
+.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Hover overrides */
+.light .hover\:bg-slate-800\/40:hover {
+  background-color: rgba(241, 245, 249, 0.6) !important;
+}
+
+.light .hover\:text-slate-200:hover {
+  color: #0f172a !important;
+}
+
+.light .hover\:border-slate-700:hover {
+  border-color: #cbd5e1 !important;
+}
+
+/* Brand logo uses inline styles in Sidebar.tsx for reliable gradient rendering */
+
+/* Gradient text light mode correction - rich blue to indigo gradient */
+.light h1.bg-gradient-to-r {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #4f46e5 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.light .from-slate-100 {
+  --tw-gradient-from: #0f172a !important;
+  --tw-gradient-to: #334155 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.light .to-slate-300 {
+  --tw-gradient-to: #475569 !important;
+}
+
+/* Button variants styling */
+.light .bg-slate-905 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+.light .bg-slate-905:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Custom Scrollbar in light mode */
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Recharts grid & tooltips overrides in light mode */
+.light .recharts-cartesian-grid-horizontal line,
+.light .recharts-cartesian-grid-vertical line {
+  stroke: #e2e8f0 !important;
+}
+
+.light .recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05) !important;
+}
+
+.light .recharts-tooltip-wrapper .recharts-tooltip-item {
+  color: #0f172a !important;
+}
+
+.light .recharts-tooltip-wrapper .recharts-tooltip-label {
+  color: #475569 !important;
+  font-weight: bold !important;
+}
+
+/* Visibility and color improvements in light mode */
+.light .text-indigo-400 {
+  color: #4f46e5 !important; /* Standout royal indigo instead of faded purple */
+}
+
+.light .border-indigo-500\/20 {
+  border-color: rgba(79, 70, 229, 0.25) !important;
+}
+
+.light .bg-indigo-655\/20,
+.light .bg-indigo-600\/10 {
+  background-color: rgba(79, 70, 229, 0.08) !important;
+}
+
+.light .bg-slate-800 {
+  background-color: #e2e8f0 !important; /* Soft grey instead of black boxes for channel pills */
+}
+
+.light .border-slate-700 {
+  border-color: #cbd5e1 !important;
+}
+
+/* High contrast colored text for sentiment, status, and role badges in light mode */
+.light .text-emerald-400 {
+  color: #059669 !important; /* Rich green */
+}
+
+.light .text-rose-400 {
+  color: #dc2626 !important; /* Rich red */
+}
+
+.light .text-amber-400 {
+  color: #d97706 !important; /* Rich amber */
+}
+
+.light .text-purple-400 {
+  color: #7c3aed !important; /* Rich purple */
+}
+
+.light .text-blue-400 {
+  color: #2563eb !important; /* Rich blue */
+}
+
+.light .text-violet-400 {
+  color: #6d28d9 !important; /* Rich violet */
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* Live Feedback Pulse Ticker — horizontal scroll animation */
+/* ═══════════════════════════════════════════════════════ */
+@keyframes pulse-ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Burning Issues card entrance animation */
+@keyframes issue-slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
