@@ -180,9 +180,9 @@ export default function TrendsPage() {
             onChange={(e) => setDateRange(e.target.value as "7d" | "30d" | "90d")}
             className="bg-transparent border-none text-slate-700 dark:text-slate-300 focus:outline-none cursor-pointer font-semibold"
           >
-            <option value="7d">Last 7 Days</option>
-            <option value="30d">Last 30 Days</option>
-            <option value="90d">Last 90 Days</option>
+            <option value="7d" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Last 7 Days</option>
+            <option value="30d" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Last 30 Days</option>
+            <option value="90d" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Last 90 Days</option>
           </select>
         </div>
       </div>
