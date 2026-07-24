@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
-import { ArrowLeft, Layers, Sun, Moon, ArrowRight } from "lucide-react";
+import { ArrowLeft, Layers, Sun, Moon, ArrowRight, ShieldCheck } from "lucide-react";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -216,6 +216,14 @@ export default function SignUpPage() {
             </Link>
           </div>
         </form>
+      </div>
+
+      {/* Security & Encryption Badge */}
+      <div className={`mt-6 flex items-center justify-center gap-2 text-xs font-semibold ${
+        isDarkMode ? "text-slate-400" : "text-slate-500"
+      }`}>
+        <ShieldCheck className="h-4 w-4 text-emerald-500" />
+        <span>Protected by 256-Bit SSL Encryption & Enterprise Security</span>
       </div>
     </div>
   );

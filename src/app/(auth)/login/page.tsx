@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
-import { ArrowLeft, Layers, Mail, Lock, ArrowRight, Sparkles, Sun, Moon } from "lucide-react";
+import { ArrowLeft, Layers, Mail, Lock, ArrowRight, Sparkles, Sun, Moon, ShieldCheck } from "lucide-react";
 
 function LoginForm() {
   const router = useRouter();
@@ -220,10 +220,12 @@ function LoginForm() {
           </div>
         </div>
 
-        {/* Footer Credit & Badges */}
-        <div className={`mt-6 text-center text-[11px] space-y-1 ${isDarkMode ? "text-slate-500" : "text-slate-400"}`}>
-          <p>Protected by PostgreSQL Row-Level Workspace Isolation</p>
-          <p className="text-[10px] opacity-75">Project LOOP Platform v2.4 • Anthropic Claude 3.5 Sonnet</p>
+        {/* Security & Encryption Badge */}
+        <div className={`mt-6 flex items-center justify-center gap-2 text-xs font-semibold ${
+          isDarkMode ? "text-slate-400" : "text-slate-500"
+        }`}>
+          <ShieldCheck className="h-4 w-4 text-emerald-500" />
+          <span>Protected by 256-Bit SSL Encryption & Enterprise Security</span>
         </div>
       </div>
     </div>
