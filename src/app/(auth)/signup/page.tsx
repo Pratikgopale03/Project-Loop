@@ -31,10 +31,10 @@ export default function SignUpPage() {
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(data.error || "Something went wrong");
+        throw new Error(data?.error || "Failed to register workspace. Please check your inputs.");
       }
 
       router.push("/login?signup=success");
