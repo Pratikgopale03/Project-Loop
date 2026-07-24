@@ -8,6 +8,7 @@ const signUpSchema = zod.object({
   email: zod.string().email("Invalid email address"),
   password: zod.string().min(6, "Password must be at least 6 characters"),
   workspaceName: zod.string().min(2, "Workspace name must be at least 2 characters"),
+  role: zod.enum(["ADMIN", "ANALYST", "VIEWER"]).optional().default("ADMIN"),
 });
 
 export async function POST(request: Request) {
@@ -22,7 +23,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, password, workspaceName } = parsed.data;
+    const { name, email, password, workspaceName, role } = parsed.data;
 
     // Check if email already exists
     const existingUser = await db.user.findUnique({
@@ -50,7 +51,7 @@ export async function POST(request: Request) {
           name,
           email: email.toLowerCase(),
           passwordHash,
-          role: "ADMIN", // Creator becomes ADMIN
+          role: role || "ADMIN",
           workspaceId: workspace.id,
         }
       });

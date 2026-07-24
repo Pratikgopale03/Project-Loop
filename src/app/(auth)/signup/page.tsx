@@ -15,6 +15,7 @@ export default function SignUpPage() {
     email: "",
     password: "",
     workspaceName: "",
+    role: "ADMIN",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -171,6 +172,25 @@ export default function SignUpPage() {
                 value={formData.workspaceName}
                 onChange={(e) => setFormData({ ...formData, workspaceName: e.target.value })}
               />
+            </div>
+
+            <div>
+              <label className={`block text-xs font-bold mb-1 ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>
+                Select User Role
+              </label>
+              <select
+                value={formData.role}
+                onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                className={`w-full px-4 py-3 border rounded-xl text-sm font-medium focus:outline-none focus:ring-2 transition-all ${
+                  isDarkMode
+                    ? "bg-slate-950/80 border-slate-800 text-slate-100 focus:border-indigo-500 focus:ring-indigo-500/30"
+                    : "bg-slate-50 border-slate-300 text-slate-900 focus:border-indigo-600 focus:ring-indigo-500/20"
+                }`}
+              >
+                <option value="ADMIN" className="bg-slate-900 text-slate-100">👑 ADMIN (Full Control & Workspace Management)</option>
+                <option value="ANALYST" className="bg-slate-900 text-slate-100">📊 ANALYST (Ingest Data, Triage & AI Search)</option>
+                <option value="VIEWER" className="bg-slate-900 text-slate-100">👁️ VIEWER (Read-Only Mode & View Analytics)</option>
+              </select>
             </div>
 
             <div>
