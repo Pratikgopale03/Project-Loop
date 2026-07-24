@@ -225,7 +225,7 @@ function LoginForm() {
           isDarkMode ? "text-slate-400" : "text-slate-500"
         }`}>
           <ShieldCheck className="h-4 w-4 text-emerald-500" />
-          <span>Protected by 256-Bit SSL Encryption & Enterprise Security</span>
+          <span>100% Secure & Encrypted • All Credentials & Workspace Data Protected</span>
         </div>
       </div>
     </div>
