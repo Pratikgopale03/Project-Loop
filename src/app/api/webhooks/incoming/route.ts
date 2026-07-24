@@ -39,8 +39,18 @@ export async function POST(request: Request) {
       );
     }
 
-    // Target active workspace
-    const workspace = await db.workspace.findFirst();
+    // Target specific workspace if workspaceId passed in body, header, or query, else default to primary active workspace
+    const { searchParams } = new URL(request.url);
+    const requestedWorkspaceId = body.workspaceId || request.headers.get("x-workspace-id") || searchParams.get("workspaceId");
+
+    let workspace = null;
+    if (requestedWorkspaceId) {
+      workspace = await db.workspace.findUnique({ where: { id: requestedWorkspaceId } });
+    }
+    if (!workspace) {
+      workspace = await db.workspace.findFirst();
+    }
+
     if (!workspace) {
       return NextResponse.json({ error: "No active workspace found" }, { status: 404 });
     }
