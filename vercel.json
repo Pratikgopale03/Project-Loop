@@ -1,7 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/webhooks/stream",
+      "path": "/api/feedback/stream",
       "schedule": "*/5 * * * *"
     }
   ]

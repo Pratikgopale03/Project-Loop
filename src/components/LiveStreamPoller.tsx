@@ -12,7 +12,7 @@ export default function LiveStreamPoller() {
     // Automatically trigger live stream poller every 45 seconds
     const interval = setInterval(async () => {
       try {
-        const res = await fetch("/api/webhooks/stream", { method: "POST" });
+        const res = await fetch("/api/feedback/stream", { method: "POST" });
         if (res.ok) {
           const data = await res.json();
           if (data.success && data.item) {
