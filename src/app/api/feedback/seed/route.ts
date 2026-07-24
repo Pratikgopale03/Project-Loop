@@ -76,9 +76,34 @@ const DYNAMIC_FEEDBACK_POOL = [
     customerLabel: "Snowflake Enterprise",
   },
   {
-    content: "Asana team reported search latency spikes over 800ms when querying multi-word phrases in workspace search bar.",
-    channel: "Support Ticket",
-    customerLabel: "Asana Engineering",
+    content: "Zomato delivery was delayed by 45 minutes and food arrived cold. Support refused refund.",
+    channel: "Zomato",
+    customerLabel: "Rohan Sharma (@ZomatoVIP)",
+  },
+  {
+    content: "Twitter app timeline is lagging on Android 15. Scrolling freezes every 5 seconds.",
+    channel: "Twitter",
+    customerLabel: "Alex Rivera (@TwitterDev)",
+  },
+  {
+    content: "Uber driver canceled after 20 mins wait in heavy traffic. Charged cancellation fee unfairly.",
+    channel: "Uber",
+    customerLabel: "Priya Sharma (@UberUser)",
+  },
+  {
+    content: "Swiggy Instamart order missing 3 grocery items and customer care line is unreachable.",
+    channel: "Swiggy",
+    customerLabel: "Amit Patel (@SwiggyGold)",
+  },
+  {
+    content: "Amazon Prime package delivered with open seal and damaged box contents.",
+    channel: "Amazon",
+    customerLabel: "Rahul Verma (@AmazonPrime)",
+  },
+  {
+    content: "Flipkart order replacement request stuck in pending state for 4 days.",
+    channel: "Flipkart",
+    customerLabel: "Sneha Reddy (@FlipkartPlus)",
   },
 ];
 

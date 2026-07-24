@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth-config";
 import Sidebar from "@/components/Sidebar";
+import LiveStreamPoller from "@/components/LiveStreamPoller";
 
 export default async function AppLayout({
   children,
@@ -31,6 +32,7 @@ export default async function AppLayout({
           {children}
         </div>
       </main>
+      <LiveStreamPoller />
     </div>
   );
 }
