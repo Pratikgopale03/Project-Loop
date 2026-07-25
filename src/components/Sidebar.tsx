@@ -175,11 +175,11 @@ export default function Sidebar({ user }: SidebarProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search features or logs..."
-              className="w-full pl-3 pr-8 py-2 text-xs bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full pl-3 pr-8 py-2 text-xs bg-slate-200/80 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 shadow-inner font-semibold"
             />
             <button
               type="submit"
-              className="absolute right-2.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 p-0.5 transition"
+              className="absolute right-2.5 text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 p-0.5 transition"
               title="Search"
             >
               <Search className="h-3.5 w-3.5" />

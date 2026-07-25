@@ -612,15 +612,24 @@ export default function InboxPage() {
         <div className="lg:col-span-8 space-y-4">
           {/* Filter Bar */}
           <div className="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex flex-wrap gap-4 items-center justify-between transition-all duration-300 shadow-sm dark:shadow-none">
-            <div className="flex flex-1 min-w-[200px] items-center gap-2 px-3 py-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg transition-colors">
-              <Search className="h-4 w-4 text-slate-400 dark:text-slate-500" />
+            <div className="flex flex-1 min-w-[240px] items-center gap-2.5 px-3.5 py-2 bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 shadow-sm transition-all">
+              <Search className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
               <input
                 type="text"
                 placeholder="Search feedback content..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="flex-1 bg-transparent border-none text-sm text-slate-800 dark:text-slate-200 placeholder-slate-450 dark:placeholder-slate-500 focus:outline-none"
+                className="flex-1 bg-transparent border-none text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none"
               />
+              {search && (
+                <button
+                  type="button"
+                  onClick={() => setSearch("")}
+                  className="text-xs font-bold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                >
+                  ×
+                </button>
+              )}
             </div>
 
             <div className="flex flex-wrap gap-3">
@@ -903,8 +912,8 @@ export default function InboxPage() {
 
       {/* Delete Feedback Confirmation Modal */}
       {deleteConfirmId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 dark:bg-black/50 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4 -mt-12 sm:-mt-16">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4 my-auto">
             <div className="flex items-start gap-3">
               <div className="p-3 rounded-xl bg-rose-500/10 text-rose-500 shrink-0 mt-0.5">
                 <Trash2 className="h-5 w-5" />
@@ -941,8 +950,8 @@ export default function InboxPage() {
 
       {/* Clear Actioned Confirmation Modal */}
       {clearActionedConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 dark:bg-black/50 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4 -mt-12 sm:-mt-16">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4 my-auto">
             <div className="flex items-start gap-3">
               <div className="p-3 rounded-xl bg-rose-500/10 text-rose-500 shrink-0 mt-0.5">
                 <Trash2 className="h-5 w-5" />

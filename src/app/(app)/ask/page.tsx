@@ -262,19 +262,19 @@ export default function AskPage() {
                   </div>
                 </div>
 
-                {/* AI Answer Card (Left Aligned - Enlarged Container & Readability) */}
-                <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-5 shadow-xl shadow-slate-200/60 dark:shadow-none backdrop-blur-md w-full max-w-4xl border-slate-200/90 dark:border-slate-800">
+                {/* AI Answer Card (Left Aligned - Clean Standard Container) */}
+                <div className="bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 md:p-6 space-y-4 shadow-lg backdrop-blur-md max-w-3xl">
                   {/* AI Card Header */}
                   <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/20">
+                      <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/20">
                         <Bot className="h-4 w-4" />
                       </div>
-                      <span className="text-sm font-bold text-slate-900 dark:text-white tracking-wide">
+                      <span className="text-xs font-bold text-slate-900 dark:text-white tracking-wide">
                         LOOP AI Intelligence
                       </span>
                     </div>
-                    <span className="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
                       Grounded Answer
                     </span>
                   </div>
