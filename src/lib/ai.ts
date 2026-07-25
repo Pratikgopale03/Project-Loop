@@ -1,4 +1,3 @@
-import { NextConfig } from "next";
 import Anthropic from "@anthropic-ai/sdk";
 import * as zod from "zod";
 
