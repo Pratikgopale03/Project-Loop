@@ -83,10 +83,10 @@ export default function AskPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-black tracking-tight text-white">
+          <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">
             Ask LOOP
           </h1>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
             Grounded answers built only from your feedback data — with sources.
           </p>
         </div>
@@ -98,9 +98,9 @@ export default function AskPage() {
             setQuestion("");
             setError("");
           }}
-          className="py-2 px-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold rounded-xl flex items-center gap-2 transition"
+          className="py-2 px-4 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl flex items-center gap-2 transition"
         >
-          <span className="text-base leading-none text-indigo-400">+</span> New Chat
+          <span className="text-base leading-none text-indigo-600 dark:text-indigo-400">+</span> New Chat
         </button>
       </div>
 
@@ -112,12 +112,12 @@ export default function AskPage() {
             {/* Center Violet Icon Box */}
             <div className="space-y-4 max-w-md">
               <div className="w-16 h-16 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-indigo-500/10">
-                <MessageSquare className="h-8 w-8 text-indigo-400" />
+                <MessageSquare className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
               </div>
-              <h2 className="text-2xl font-black text-white tracking-tight">
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
                 Ask LOOP Anything
               </h2>
-              <p className="text-slate-400 text-xs leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
                 Inquire about customer trends, feature requests, or friction points.<br />
                 The AI searches raw feedback using embeddings before answering.
               </p>
@@ -131,10 +131,10 @@ export default function AskPage() {
                   type="button"
                   disabled={loading}
                   onClick={() => setQuestion(q)}
-                  className={`p-4 bg-slate-900/80 border rounded-2xl text-xs font-medium text-slate-300 hover:text-white transition shadow-sm hover:border-indigo-500 text-left leading-relaxed ${
+                  className={`p-4 rounded-2xl text-xs font-medium transition shadow-sm hover:border-indigo-500 text-left leading-relaxed ${
                     idx === 0
-                      ? "border-indigo-500/80 bg-indigo-950/20 shadow-md shadow-indigo-500/10"
-                      : "border-slate-800/80 hover:bg-slate-900"
+                      ? "border-2 border-indigo-500 bg-indigo-50/50 dark:bg-indigo-950/20 text-slate-900 dark:text-white shadow-md shadow-indigo-500/10 font-bold"
+                      : "border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
                   {q}
@@ -146,31 +146,31 @@ export default function AskPage() {
           /* Answers History */
           <div className="space-y-6 flex-1 overflow-y-auto pr-1">
             {history.map((turn, index) => (
-              <div key={index} className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 space-y-4 backdrop-blur-sm">
+              <div key={index} className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 space-y-4 shadow-sm dark:shadow-none backdrop-blur-sm">
                 {/* Question Header */}
-                <div className="flex gap-3 items-start border-b border-slate-800/80 pb-4">
-                  <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mt-0.5">
+                <div className="flex gap-3 items-start border-b border-slate-100 dark:border-slate-800/80 pb-4">
+                  <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 mt-0.5">
                     <MessageSquare className="h-4 w-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Question Asked</span>
-                    <p className="text-slate-100 text-sm font-bold mt-0.5">"{turn.question}"</p>
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold">Question Asked</span>
+                    <p className="text-slate-900 dark:text-slate-100 text-sm font-bold mt-0.5">"{turn.question}"</p>
                   </div>
                 </div>
 
                 {/* Answer Narrative */}
                 <div className="space-y-2">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">Grounded Answer</span>
-                  <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap font-sans">
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold block">Grounded Answer</span>
+                  <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed whitespace-pre-wrap font-sans">
                     {turn.answer}
                   </p>
                 </div>
 
                 {/* Citations / Evidence */}
                 {turn.citations.length > 0 && (
-                  <div className="space-y-3 pt-3 border-t border-slate-800/60">
-                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold flex items-center gap-1.5">
-                      <BookOpen className="h-3.5 w-3.5 text-indigo-400" />
+                  <div className="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800/60">
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold flex items-center gap-1.5">
+                      <BookOpen className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
                       Grounded Citations ({turn.citations.length})
                     </span>
 
@@ -178,22 +178,22 @@ export default function AskPage() {
                       {turn.citations.map((cite, idx) => (
                         <div 
                           key={cite.id}
-                          className="bg-slate-950/60 border border-slate-800/80 p-3.5 rounded-xl text-xs space-y-2 relative hover:border-slate-700 transition"
+                          className="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 p-3.5 rounded-xl text-xs space-y-2 relative hover:border-indigo-400 dark:hover:border-slate-700 transition"
                         >
-                          <div className="flex justify-between items-center text-[9px] text-slate-500 font-medium">
-                            <span className="px-2 py-0.5 rounded-md bg-slate-900 text-indigo-300 border border-indigo-500/20 font-bold">
+                          <div className="flex justify-between items-center text-[9px] text-slate-400 dark:text-slate-500 font-medium">
+                            <span className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-300 border border-slate-200 dark:border-indigo-500/20 font-bold">
                               {cite.channel}
                             </span>
                             <span>[Feedback #{idx + 1}]</span>
                           </div>
                           
-                          <p className="text-slate-400 text-[11px] leading-relaxed italic">
+                          <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed italic">
                             "{cite.content.length > 140 ? cite.content.slice(0, 140) + "..." : cite.content}"
                           </p>
 
                           <div className="flex justify-between items-center pt-1 text-[9px]">
                             {cite.customerLabel && (
-                              <span className="text-violet-400 font-bold truncate max-w-[120px]">
+                              <span className="text-indigo-600 dark:text-violet-400 font-bold truncate max-w-[120px]">
                                 @ {cite.customerLabel}
                               </span>
                             )}
@@ -213,9 +213,9 @@ export default function AskPage() {
 
         {/* Loading Bar */}
         {loading && (
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex items-center gap-3">
-            <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-            <span className="text-xs text-slate-300 font-semibold">
+          <div className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-3 shadow-sm dark:shadow-none">
+            <div className="w-5 h-5 border-2 border-indigo-600 dark:border-indigo-500 border-t-transparent rounded-full animate-spin" />
+            <span className="text-xs text-slate-700 dark:text-slate-300 font-semibold">
               Searching vector embeddings and querying Claude...
             </span>
           </div>
@@ -224,13 +224,13 @@ export default function AskPage() {
         {/* Bottom Input Search Bar */}
         <div className="pt-2">
           {error && (
-            <div className="mb-3 bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs p-3 rounded-xl flex items-center gap-2">
+            <div className="mb-3 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs p-3 rounded-xl flex items-center gap-2">
               <AlertCircle className="h-4 w-4 shrink-0" />
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex gap-3 bg-slate-900/90 border border-slate-800/90 p-2 rounded-2xl shadow-xl backdrop-blur-md">
+          <form onSubmit={handleSubmit} className="flex gap-3 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/90 p-2 rounded-2xl shadow-lg dark:shadow-xl backdrop-blur-md">
             <input
               type="text"
               required
@@ -238,7 +238,7 @@ export default function AskPage() {
               placeholder="Ask a question about user feedback..."
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              className="flex-1 px-4 py-3 bg-transparent text-slate-100 placeholder-slate-500 focus:outline-none text-xs font-medium disabled:opacity-50"
+              className="flex-1 px-4 py-3 bg-transparent text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none text-xs font-medium disabled:opacity-50"
             />
             <button
               type="submit"
