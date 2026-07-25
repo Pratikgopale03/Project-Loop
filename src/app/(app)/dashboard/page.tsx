@@ -411,19 +411,20 @@ export default function DashboardPage() {
                   <AreaChart data={volumeData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <defs>
                       <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.2}/>
-                        <stop offset="95%" stopColor="#4f46e5" stopOpacity={0}/>
+                        <stop offset="0%" stopColor="#6366f1" stopOpacity={0.45}/>
+                        <stop offset="50%" stopColor="#8b5cf6" stopOpacity={0.2}/>
+                        <stop offset="100%" stopColor="#6366f1" stopOpacity={0}/>
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" className="stroke-slate-200 dark:stroke-slate-800" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" className="stroke-slate-200 dark:stroke-slate-800/80" />
                     <XAxis dataKey="date" stroke="#64748b" fontSize={11} tickLine={false} />
                     <YAxis stroke="#64748b" fontSize={11} tickLine={false} />
                     <Tooltip 
-                      contentStyle={{ backgroundColor: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "8px" }}
+                      contentStyle={{ backgroundColor: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "16px" }}
                       labelStyle={{ color: "#475569", fontWeight: "bold" }}
                       itemStyle={{ color: "#0f172a" }}
                     />
-                    <Area type="monotone" dataKey="count" stroke="#6366f1" strokeWidth={2} fillOpacity={1} fill="url(#colorCount)" />
+                    <Area type="monotone" dataKey="count" stroke="#6366f1" strokeWidth={3} fillOpacity={1} fill="url(#colorCount)" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>

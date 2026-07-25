@@ -254,8 +254,51 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ═══════════════════════════════════════════════════════ */
-/* Live Feedback Pulse Ticker — horizontal scroll animation */
+/* iOS ULTRA-PREMIUM GLASSMORPHISM & GLOSSY GRAPH STYLING  */
 /* ═══════════════════════════════════════════════════════ */
+
+/* iOS Squircle Glass Cards & Controls */
+.ios-glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 1.5rem;
+}
+
+.dark .ios-glass-card {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+}
+
+/* Recharts Glossy iOS Curves & Floating Tooltips */
+.recharts-curve.recharts-area-area {
+  filter: drop-shadow(0px 10px 20px rgba(99, 102, 241, 0.3));
+}
+
+.recharts-default-tooltip {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12) !important;
+}
+
+.dark .recharts-default-tooltip {
+  background: rgba(15, 23, 42, 0.92) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Live Feedback Pulse Ticker — horizontal scroll animation */
 @keyframes pulse-ticker {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
