@@ -1,5 +1,5 @@
 import { PrismaClient, Sentiment, FeedbackStatus } from "@prisma/client";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { pipeline, env } from "@huggingface/transformers";
 
 env.allowLocalModels = false;
