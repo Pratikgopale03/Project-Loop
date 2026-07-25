@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    serverComponentsExternalPackages: ["@huggingface/transformers", "onnxruntime-node", "@prisma/client", "bcryptjs"],
+    serverComponentsExternalPackages: ["@huggingface/transformers", "@prisma/client"],
   },
   eslint: {
     ignoreDuringBuilds: true,
