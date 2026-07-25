@@ -183,15 +183,15 @@ export default function AskPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-6rem)] max-w-5xl mx-auto space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+    <div className="h-[calc(100vh-5.5rem)] flex flex-col max-w-5xl mx-auto space-y-4 overflow-hidden">
+      {/* Fixed Header */}
+      <div className="flex items-center justify-between shrink-0">
         <div>
-          <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             Ask LOOP
             <Sparkles className="h-5 w-5 text-indigo-500 animate-pulse" />
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm mt-1 font-medium">
+          <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm mt-0.5 font-medium">
             Grounded AI intelligence powered directly by customer feedback data.
           </p>
         </div>
@@ -208,11 +208,11 @@ export default function AskPage() {
         )}
       </div>
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col justify-between space-y-6">
+      {/* Independently Scrollable Main Content Area */}
+      <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
         {/* Empty State / Preset Cards */}
         {history.length === 0 ? (
-          <div className="flex-1 flex flex-col items-center justify-center my-auto py-10 text-center space-y-8">
+          <div className="flex-1 flex flex-col items-center justify-center py-6 text-center space-y-8 overflow-y-auto">
             {/* Center Glowing AI Icon Box */}
             <div className="space-y-4 max-w-md">
               <div className="w-16 h-16 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl shadow-indigo-500/25 text-white">
@@ -247,8 +247,8 @@ export default function AskPage() {
             </div>
           </div>
         ) : (
-          /* Answers History */
-          <div className="space-y-6 flex-1 overflow-y-auto pr-1">
+          /* Answers History - Independently Scrollable */
+          <div className="flex-1 overflow-y-auto pr-2 space-y-6 min-h-0">
             {history.map((turn, index) => (
               <div key={index} className="space-y-4 animate-in fade-in duration-200">
                 {/* User Prompt Bubble (Right Aligned) */}
@@ -335,7 +335,7 @@ export default function AskPage() {
 
         {/* Loading Bar */}
         {loading && (
-          <div className="bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-3 shadow-md">
+          <div className="my-2 bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-3 shadow-md shrink-0">
             <div className="w-5 h-5 border-2 border-indigo-600 dark:border-indigo-500 border-t-transparent rounded-full animate-spin" />
             <span className="text-xs text-slate-700 dark:text-slate-300 font-semibold">
               Searching vector embeddings and querying Claude...
@@ -343,8 +343,8 @@ export default function AskPage() {
           </div>
         )}
 
-        {/* Bottom Floating Glass Input Bar */}
-        <div className="pt-2">
+        {/* Fixed Bottom Input Bar */}
+        <div className="shrink-0 pt-2 pb-1">
           {error && (
             <div className="mb-3 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs p-3 rounded-xl flex items-center gap-2">
               <AlertCircle className="h-4 w-4 shrink-0" />
