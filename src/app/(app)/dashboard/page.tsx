@@ -151,43 +151,43 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      {/* Top Header matching Screenshot 1 */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
+      {/* Top Header */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-black tracking-tight text-slate-900 dark:text-white whitespace-nowrap truncate">
             Good afternoon, {userName} — you have {stats.pendingTriage || 19} items needing review.
           </h1>
         </div>
 
-        {/* Global Filters */}
-        <div className="flex flex-wrap gap-3 items-center">
-          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3.5 py-2 text-xs text-slate-300">
-            <Calendar className="h-3.5 w-3.5 text-indigo-400" />
+        {/* Global Filters Side-by-Side */}
+        <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex items-center gap-2 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/80 rounded-xl px-3 py-2 text-xs text-slate-700 dark:text-slate-300 shadow-sm dark:shadow-none">
+            <Calendar className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
             <select
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value)}
-              className="bg-transparent border-none text-slate-300 focus:outline-none cursor-pointer text-xs font-medium"
+              className="bg-transparent border-none text-slate-700 dark:text-slate-300 focus:outline-none cursor-pointer text-xs font-medium"
             >
-              <option value="7d" className="bg-slate-900 text-slate-200">Last 7 Days</option>
-              <option value="30d" className="bg-slate-900 text-slate-200">Last 30 Days</option>
-              <option value="90d" className="bg-slate-900 text-slate-200">Last 90 Days</option>
+              <option value="7d" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Last 7 Days</option>
+              <option value="30d" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Last 30 Days</option>
+              <option value="90d" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Last 90 Days</option>
             </select>
           </div>
 
-          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3.5 py-2 text-xs text-slate-300">
-            <Filter className="h-3.5 w-3.5 text-indigo-400" />
+          <div className="flex items-center gap-2 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800/80 rounded-xl px-3 py-2 text-xs text-slate-700 dark:text-slate-300 shadow-sm dark:shadow-none">
+            <Filter className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
             <select
               value={channel}
               onChange={(e) => setChannel(e.target.value)}
-              className="bg-transparent border-none text-slate-300 focus:outline-none cursor-pointer text-xs font-medium"
+              className="bg-transparent border-none text-slate-700 dark:text-slate-300 focus:outline-none cursor-pointer text-xs font-medium"
             >
-              <option value="ALL" className="bg-slate-900 text-slate-200">All Channels</option>
-              <option className="bg-slate-900 text-slate-200">Email</option>
-              <option className="bg-slate-900 text-slate-200">Support Ticket</option>
-              <option className="bg-slate-900 text-slate-200">App Store Review</option>
-              <option className="bg-slate-900 text-slate-200">NPS Survey</option>
-              <option className="bg-slate-900 text-slate-200">Sales Call Notes</option>
-              <option className="bg-slate-900 text-slate-200">Twitter Mention</option>
+              <option value="ALL" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">All Channels</option>
+              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Email</option>
+              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Support Ticket</option>
+              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">App Store Review</option>
+              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">NPS Survey</option>
+              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Sales Call Notes</option>
+              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Twitter Mention</option>
             </select>
           </div>
         </div>
