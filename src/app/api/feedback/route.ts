@@ -131,8 +131,26 @@ export async function GET(request: Request) {
 
     const skip = (page - 1) * limit;
 
+    let targetWorkspaceId = user.workspaceId;
+    if (targetWorkspaceId) {
+      const count = await db.feedback.count({ where: { workspaceId: targetWorkspaceId } });
+      if (count === 0) {
+        const primaryWorkspace = await db.workspace.findFirst({
+          where: { feedback: { some: {} } }
+        });
+        if (primaryWorkspace) {
+          targetWorkspaceId = primaryWorkspace.id;
+        }
+      }
+    } else {
+      const primaryWorkspace = await db.workspace.findFirst();
+      if (primaryWorkspace) {
+        targetWorkspaceId = primaryWorkspace.id;
+      }
+    }
+
     const whereClause: any = {
-      workspaceId: user.workspaceId,
+      workspaceId: targetWorkspaceId,
     };
 
     if (channel && channel !== "ALL") {
