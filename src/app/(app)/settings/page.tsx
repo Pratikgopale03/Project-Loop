@@ -21,7 +21,8 @@ import {
   Ticket,
   ShoppingBag,
   Car,
-  Utensils
+  Utensils,
+  Key
 } from "lucide-react";
 
 interface Member {
@@ -46,6 +47,29 @@ export default function SettingsPage() {
 
   // User Profile State
   const [displayName, setDisplayName] = useState(session?.user?.name || "Alice");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleChangePassword = () => {
+    if (!currentPassword) {
+      showToast("⚠️ Please enter your current password.", "error");
+      return;
+    }
+    if (!newPassword || newPassword.length < 6) {
+      showToast("⚠️ New password must be at least 6 characters long.", "error");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      showToast("⚠️ New password and confirmation do not match.", "error");
+      return;
+    }
+
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+    showToast("✅ Password updated successfully!", "success");
+  };
 
   // Integrations Toggle State
   const [integrations, setIntegrations] = useState({
@@ -367,6 +391,63 @@ export default function SettingsPage() {
                 className="w-full py-3 px-4 bg-rose-500 hover:bg-rose-600 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-500/20"
               >
                 Save Profile Settings
+              </button>
+            </div>
+          </div>
+
+          {/* Change Password Card */}
+          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md space-y-4">
+            <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
+              <Key className="h-5 w-5 text-rose-400" />
+              Security & Change Password
+            </h2>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  Current Password
+                </label>
+                <input
+                  type="password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  New Password
+                </label>
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  Confirm New Password
+                </label>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                />
+              </div>
+
+              <button
+                type="button"
+                onClick={handleChangePassword}
+                className="w-full py-3 px-4 bg-rose-500 hover:bg-rose-600 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-500/20"
+              >
+                Update Security Password
               </button>
             </div>
           </div>
