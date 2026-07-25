@@ -343,8 +343,8 @@ export default function AskPage() {
           </div>
         )}
 
-        {/* Fixed Bottom Input Bar */}
-        <div className="shrink-0 pt-2 pb-1">
+        {/* Fixed Bottom Input Bar (Enlarged Container) */}
+        <div className="shrink-0 pt-3 pb-2">
           {error && (
             <div className="mb-3 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs p-3 rounded-xl flex items-center gap-2">
               <AlertCircle className="h-4 w-4 shrink-0" />
@@ -352,23 +352,26 @@ export default function AskPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex gap-3 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 p-2 rounded-2xl shadow-xl backdrop-blur-md focus-within:border-indigo-500 transition-colors">
+          <form onSubmit={handleSubmit} className="flex gap-3 items-center bg-white dark:bg-slate-900/95 border-2 border-slate-200 dark:border-slate-800/90 p-2.5 sm:p-3 md:p-3.5 rounded-2xl md:rounded-3xl shadow-2xl shadow-indigo-500/10 dark:shadow-none backdrop-blur-xl focus-within:border-indigo-500 dark:focus-within:border-indigo-400 transition-all duration-200">
+            <div className="pl-2.5 text-indigo-500 dark:text-indigo-400 shrink-0">
+              <Sparkles className="h-5 w-5 animate-pulse" />
+            </div>
             <input
               type="text"
               required
               disabled={loading}
-              placeholder="Ask a question about user feedback..."
+              placeholder="Ask a question about user feedback, sentiment, or feature requests..."
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              className="flex-1 px-4 py-3 bg-transparent text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none text-xs md:text-sm font-medium disabled:opacity-50"
+              className="flex-1 px-3 py-3 md:py-3.5 bg-transparent text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none text-sm md:text-base font-semibold disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={loading || !question.trim()}
-              className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-2 transition shadow-lg shadow-indigo-500/20 border border-indigo-400/20 shrink-0"
+              className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 text-white font-black py-3 px-6 md:py-3.5 md:px-8 rounded-xl md:rounded-2xl text-xs md:text-sm flex items-center gap-2 transition-all shadow-xl shadow-indigo-500/25 border border-indigo-400/30 shrink-0 hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>Ask</span>
-              <Send className="h-3.5 w-3.5" />
+              <span>Ask LOOP</span>
+              <Send className="h-4 w-4" />
             </button>
           </form>
         </div>
