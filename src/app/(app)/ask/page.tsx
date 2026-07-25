@@ -100,7 +100,7 @@ export default function AskPage() {
           }}
           className="py-2 px-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold rounded-xl flex items-center gap-2 transition"
         >
-          <span className="text-base leading-none text-[#ff5538]">+</span> New Chat
+          <span className="text-base leading-none text-indigo-400">+</span> New Chat
         </button>
       </div>
 
@@ -109,10 +109,10 @@ export default function AskPage() {
         {/* Empty State / Prompt Cards */}
         {history.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center my-auto py-8 text-center space-y-8">
-            {/* Center Coral Icon Box */}
+            {/* Center Violet Icon Box */}
             <div className="space-y-4 max-w-md">
-              <div className="w-16 h-16 bg-[#ff5538]/10 border border-[#ff5538]/20 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-[#ff5538]/10">
-                <MessageSquare className="h-8 w-8 text-[#ff5538]" />
+              <div className="w-16 h-16 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-indigo-500/10">
+                <MessageSquare className="h-8 w-8 text-indigo-400" />
               </div>
               <h2 className="text-2xl font-black text-white tracking-tight">
                 Ask LOOP Anything
@@ -131,9 +131,9 @@ export default function AskPage() {
                   type="button"
                   disabled={loading}
                   onClick={() => setQuestion(q)}
-                  className={`p-4 bg-slate-900/80 border rounded-2xl text-xs font-medium text-slate-300 hover:text-white transition shadow-sm hover:border-[#ff5538] text-left leading-relaxed ${
+                  className={`p-4 bg-slate-900/80 border rounded-2xl text-xs font-medium text-slate-300 hover:text-white transition shadow-sm hover:border-indigo-500 text-left leading-relaxed ${
                     idx === 0
-                      ? "border-[#ff5538]/80 bg-slate-900/90 shadow-md shadow-[#ff5538]/10"
+                      ? "border-indigo-500/80 bg-indigo-950/20 shadow-md shadow-indigo-500/10"
                       : "border-slate-800/80 hover:bg-slate-900"
                   }`}
                 >
@@ -149,7 +149,7 @@ export default function AskPage() {
               <div key={index} className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 space-y-4 backdrop-blur-sm">
                 {/* Question Header */}
                 <div className="flex gap-3 items-start border-b border-slate-800/80 pb-4">
-                  <div className="p-2 rounded-xl bg-[#ff5538]/10 text-[#ff5538] border border-[#ff5538]/20 mt-0.5">
+                  <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mt-0.5">
                     <MessageSquare className="h-4 w-4" />
                   </div>
                   <div>
@@ -170,7 +170,7 @@ export default function AskPage() {
                 {turn.citations.length > 0 && (
                   <div className="space-y-3 pt-3 border-t border-slate-800/60">
                     <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold flex items-center gap-1.5">
-                      <BookOpen className="h-3.5 w-3.5 text-[#ff5538]" />
+                      <BookOpen className="h-3.5 w-3.5 text-indigo-400" />
                       Grounded Citations ({turn.citations.length})
                     </span>
 
@@ -181,7 +181,7 @@ export default function AskPage() {
                           className="bg-slate-950/60 border border-slate-800/80 p-3.5 rounded-xl text-xs space-y-2 relative hover:border-slate-700 transition"
                         >
                           <div className="flex justify-between items-center text-[9px] text-slate-500 font-medium">
-                            <span className="px-2 py-0.5 rounded-md bg-slate-900 text-slate-300 border border-slate-800 font-bold">
+                            <span className="px-2 py-0.5 rounded-md bg-slate-900 text-indigo-300 border border-indigo-500/20 font-bold">
                               {cite.channel}
                             </span>
                             <span>[Feedback #{idx + 1}]</span>
@@ -193,7 +193,7 @@ export default function AskPage() {
 
                           <div className="flex justify-between items-center pt-1 text-[9px]">
                             {cite.customerLabel && (
-                              <span className="text-[#ff5538] font-bold truncate max-w-[120px]">
+                              <span className="text-violet-400 font-bold truncate max-w-[120px]">
                                 @ {cite.customerLabel}
                               </span>
                             )}
@@ -214,7 +214,7 @@ export default function AskPage() {
         {/* Loading Bar */}
         {loading && (
           <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex items-center gap-3">
-            <div className="w-5 h-5 border-2 border-[#ff5538] border-t-transparent rounded-full animate-spin" />
+            <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
             <span className="text-xs text-slate-300 font-semibold">
               Searching vector embeddings and querying Claude...
             </span>
@@ -243,7 +243,7 @@ export default function AskPage() {
             <button
               type="submit"
               disabled={loading || !question.trim()}
-              className="bg-[#ff5538] hover:bg-[#e04529] disabled:opacity-50 text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-1.5 transition shadow-md shadow-[#ff5538]/20 shrink-0"
+              className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-1.5 transition shadow-lg shadow-indigo-500/20 border border-indigo-400/20 shrink-0"
             >
               {loading ? "Thinking..." : "Ask >>"}
             </button>

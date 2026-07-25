@@ -161,13 +161,13 @@ export default function DashboardPage() {
 
         {/* Global Sync Status & Filters */}
         <div className="flex flex-wrap gap-3 items-center">
-          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3 py-2 text-xs font-semibold text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-[#ff5538] animate-pulse" />
+          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3.5 py-2 text-xs font-semibold text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>Last synced: 2 min ago</span>
           </div>
 
-          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3 py-2 text-xs text-slate-300">
-            <Calendar className="h-3.5 w-3.5 text-[#ff5538]" />
+          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3.5 py-2 text-xs text-slate-300">
+            <Calendar className="h-3.5 w-3.5 text-indigo-400" />
             <select
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value)}
@@ -179,8 +179,8 @@ export default function DashboardPage() {
             </select>
           </div>
 
-          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3 py-2 text-xs text-slate-300">
-            <Filter className="h-3.5 w-3.5 text-[#ff5538]" />
+          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3.5 py-2 text-xs text-slate-300">
+            <Filter className="h-3.5 w-3.5 text-indigo-400" />
             <select
               value={channel}
               onChange={(e) => setChannel(e.target.value)}

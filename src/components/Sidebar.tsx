@@ -64,12 +64,12 @@ export default function Sidebar({ user }: SidebarProps) {
   return (
     <>
       {/* Mobile Top Navigation Header (Visible only on < md screens) */}
-      <header className="md:hidden flex items-center justify-between px-4 h-14 bg-slate-900 border-b border-slate-800 shrink-0 sticky top-0 z-30 print:hidden">
+      <header className="md:hidden flex items-center justify-between px-4 h-14 bg-[#0b0d17] border-b border-slate-800/80 shrink-0 sticky top-0 z-30 print:hidden">
         <div className="flex items-center gap-2.5">
-          <div className="bg-[#ff5538] w-7 h-7 rounded-lg text-white font-black flex items-center justify-center text-sm shadow-md shadow-[#ff5538]/20">
+          <div className="bg-gradient-to-tr from-indigo-600 to-violet-500 w-7 h-7 rounded-lg text-white font-black flex items-center justify-center text-sm shadow-md shadow-indigo-500/30">
             L
           </div>
-          <span className="font-black text-base tracking-tight text-slate-100">
+          <span className="font-black text-base tracking-tight text-white">
             LOOP
           </span>
         </div>
@@ -81,7 +81,7 @@ export default function Sidebar({ user }: SidebarProps) {
             className="p-2 rounded-lg border border-slate-800 text-slate-400"
             aria-label="Toggle Theme"
           >
-            {isDarkMode ? <Sun className="h-4 w-4 text-amber-500" /> : <Moon className="h-4 w-4 text-slate-400" />}
+            {isDarkMode ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-slate-400" />}
           </button>
           <button
             type="button"
@@ -103,13 +103,13 @@ export default function Sidebar({ user }: SidebarProps) {
       )}
 
       {/* Main Sidebar Drawer (Desktop permanent + Mobile slide-over) */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-slate-800/80 bg-[#0c0e17] dark:bg-[#0c0e17] flex flex-col h-full shrink-0 transition-transform duration-300 ease-in-out md:static md:translate-x-0 print:hidden ${
+      <aside className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-slate-800/80 bg-[#0b0d17] dark:bg-[#0b0d17] flex flex-col h-full shrink-0 transition-transform duration-300 ease-in-out md:static md:translate-x-0 print:hidden ${
         mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       }`}>
         {/* Brand Header */}
         <div className="h-16 px-5 border-b border-slate-800/60 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="bg-[#ff5538] w-8 h-8 rounded-xl text-white font-black flex items-center justify-center text-lg shadow-lg shadow-[#ff5538]/30">
+            <div className="bg-gradient-to-tr from-indigo-600 to-violet-500 w-8 h-8 rounded-xl text-white font-black flex items-center justify-center text-lg shadow-lg shadow-indigo-500/30">
               L
             </div>
             <span className="font-black text-xl tracking-tight text-white">
@@ -131,7 +131,7 @@ export default function Sidebar({ user }: SidebarProps) {
             <input
               type="text"
               placeholder="Search..."
-              className="w-full px-3 py-2 text-xs bg-slate-900/90 border border-slate-800 rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:border-[#ff5538]"
+              className="w-full px-3 py-2 text-xs bg-slate-900/90 border border-slate-800 rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
             />
             <span className="absolute right-2.5 top-2 text-[10px] text-slate-500 font-mono bg-slate-800/60 px-1.5 py-0.5 rounded">
               ⌘K
@@ -140,7 +140,7 @@ export default function Sidebar({ user }: SidebarProps) {
 
           <Link
             href="/inbox"
-            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[#ff5538] hover:bg-[#e04529] text-white font-bold text-xs rounded-xl transition shadow-lg shadow-[#ff5538]/25"
+            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-indigo-500/25 border border-indigo-400/20"
           >
             <span className="text-sm font-black">+</span> Add feedback
           </Link>
@@ -157,7 +157,7 @@ export default function Sidebar({ user }: SidebarProps) {
                 href={item.href}
                 className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition ${
                   isActive
-                    ? "bg-[#ff5538] text-white shadow-md shadow-[#ff5538]/20"
+                    ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/25 border border-indigo-400/20"
                     : "text-slate-400 hover:bg-slate-900/60 hover:text-slate-200"
                 }`}
               >
@@ -167,7 +167,7 @@ export default function Sidebar({ user }: SidebarProps) {
                 </div>
                 {item.badge && (
                   <span className={`px-2 py-0.5 text-[10px] font-black rounded-full ${
-                    isActive ? "bg-white/20 text-white" : "bg-slate-800 text-slate-400"
+                    isActive ? "bg-white/20 text-white" : "bg-slate-800 text-indigo-400 border border-indigo-500/20"
                   }`}>
                     {item.badge}
                   </span>
