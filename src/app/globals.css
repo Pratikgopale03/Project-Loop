@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-outfit), sans-serif;
+  --font-sans: var(--font-plus-jakarta), var(--font-outfit), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-outfit), var(--font-plus-jakarta), sans-serif;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 /* Custom modern scrollbar */
