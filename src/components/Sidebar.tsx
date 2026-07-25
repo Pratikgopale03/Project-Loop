@@ -112,8 +112,8 @@ export default function Sidebar({ user }: SidebarProps) {
             <div className="bg-gradient-to-tr from-indigo-600 to-violet-500 w-8 h-8 rounded-xl text-white font-black flex items-center justify-center text-lg shadow-lg shadow-indigo-500/30">
               L
             </div>
-            <span className="font-black text-xl tracking-tight text-slate-900 dark:text-white">
-              LOOP
+            <span className="font-black text-lg tracking-tight text-slate-900 dark:text-white">
+              Project LOOP
             </span>
           </div>
           <button
