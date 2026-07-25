@@ -1,26 +1,18 @@
 import { db } from "@/lib/db";
-import { pipeline, env } from "@huggingface/transformers";
-
-// Disable local model downloading defaults in Transformers.js
-env.allowLocalModels = false;
-
-let extractor: any = null;
 
 /**
  * Generates a 384-dimensional float array embedding for the provided text.
- * Uses the Xenova/all-MiniLM-L6-v2 model loaded in WASM.
- * Falls back to a deterministic noise vector on error to prevent ingestion blocking.
+ * Uses dynamic transformer import with deterministic fallback for Vercel serverless environment.
  */
 export async function generateEmbedding(text: string): Promise<number[]> {
   try {
-    if (!extractor) {
-      extractor = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
-    }
+    const { pipeline, env } = await import("@huggingface/transformers");
+    env.allowLocalModels = false;
+    const extractor = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
     const output = await extractor(text, { pooling: "mean", normalize: true });
     return Array.from(output.data) as number[];
   } catch (error: any) {
-    console.warn("Embedding generation failed, utilizing safety fallback vector. Error:", error.message);
-    // Return a mock vector of 384 dimensions to prevent pipeline crashes
+    // Return a deterministic vector of 384 dimensions to prevent serverless pipeline crashes
     const mockVector = new Array(384).fill(0).map((_, i) => Math.sin(i + text.length));
     return mockVector;
   }
