@@ -368,9 +368,12 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          {/* Update Profile Settings */}
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md space-y-4">
-            <h2 className="text-lg font-bold text-slate-100">Update Profile Settings</h2>
+          {/* Update Profile & Password Settings */}
+          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md space-y-5">
+            <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
+              <UserIcon className="h-5 w-5 text-rose-400" />
+              Update Profile & Security Settings
+            </h2>
 
             <div className="space-y-4">
               <div>
@@ -385,69 +388,63 @@ export default function SettingsPage() {
                 />
               </div>
 
-              <button
-                type="button"
-                onClick={handleSaveProfile}
-                className="w-full py-3 px-4 bg-rose-500 hover:bg-rose-600 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-500/20"
-              >
-                Save Profile Settings
-              </button>
-            </div>
-          </div>
+              <div className="border-t border-slate-800/80 pt-4 space-y-4">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Key className="h-3.5 w-3.5 text-rose-400" />
+                  Change Account Password
+                </h3>
 
-          {/* Change Password Card */}
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md space-y-4">
-            <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
-              <Key className="h-5 w-5 text-rose-400" />
-              Security & Change Password
-            </h2>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                    Current Password
+                  </label>
+                  <input
+                    type="password"
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                  />
+                </div>
 
-            <div className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-                  Current Password
-                </label>
-                <input
-                  type="password"
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
-                />
-              </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                    New Password
+                  </label>
+                  <input
+                    type="password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                  />
+                </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-                  New Password
-                </label>
-                <input
-                  type="password"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-                  Confirm New Password
-                </label>
-                <input
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
-                />
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                    Confirm New Password
+                  </label>
+                  <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                  />
+                </div>
               </div>
 
               <button
                 type="button"
-                onClick={handleChangePassword}
+                onClick={() => {
+                  handleSaveProfile();
+                  if (currentPassword || newPassword) {
+                    handleChangePassword();
+                  }
+                }}
                 className="w-full py-3 px-4 bg-rose-500 hover:bg-rose-600 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-500/20"
               >
-                Update Security Password
+                Save Profile & Security Changes
               </button>
             </div>
           </div>
