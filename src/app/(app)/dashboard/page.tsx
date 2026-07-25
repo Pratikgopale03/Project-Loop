@@ -152,18 +152,17 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-lg sm:text-xl md:text-2xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-            ✨ <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-400 dark:from-indigo-400 dark:via-violet-400 dark:to-purple-300 bg-clip-text text-transparent italic">
-              "Transforming scattered feedback into evidence-backed product decisions."
+          <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+            Welcome back, {userName} 👋
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Live Pulse Active
             </span>
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex flex-wrap items-center gap-2 font-medium">
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Live Ingestion Active
-            </span>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            Real-time customer feedback intelligence across all connected channels.
           </p>
         </div>
 
