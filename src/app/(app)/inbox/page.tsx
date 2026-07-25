@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import { 
   Search, 
   Filter, 
@@ -55,6 +56,9 @@ interface FeedbackItem {
 
 export default function InboxPage() {
   const { data: session } = useSession();
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("query") || "";
+
   const userRole = session?.user?.role || "VIEWER";
   const isReadOnly = userRole === "VIEWER";
 
@@ -66,10 +70,18 @@ export default function InboxPage() {
   const [loading, setLoading] = useState(true);
 
   // Filter State
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(initialQuery);
   const [channel, setChannel] = useState("ALL");
   const [sentiment, setSentiment] = useState("ALL");
   const [status, setStatus] = useState("ALL");
+
+  useEffect(() => {
+    const q = searchParams.get("query");
+    if (q !== null) {
+      setSearch(q);
+      setPage(1);
+    }
+  }, [searchParams]);
 
   // Form State
   const [newContent, setNewContent] = useState("");
@@ -168,6 +180,11 @@ export default function InboxPage() {
       const res = await fetch(`/api/feedback?${params.toString()}`);
       if (!res.ok) throw new Error("Failed to fetch feedback");
       const data = await res.json();
+      if (data.items.length === 0 && page > 1 && data.meta.total > 0) {
+        const validPage = Math.max(1, Math.ceil(data.meta.total / 5));
+        setPage(validPage);
+        return;
+      }
       setItems(data.items);
       setTotal(data.meta.total);
       setTotalPages(data.meta.totalPages);
@@ -320,9 +337,16 @@ export default function InboxPage() {
         body: JSON.stringify({ id }),
       });
       if (res.ok) {
-        setItems(items.filter((item) => item.id !== id));
+        const remainingInCurrentPage = items.filter((item) => item.id !== id);
+        setItems(remainingInCurrentPage);
         setTotal((prev) => Math.max(0, prev - 1));
         window.dispatchEvent(new CustomEvent("feedback_updated"));
+
+        if (remainingInCurrentPage.length === 0 && page > 1) {
+          setPage((prev) => Math.max(1, prev - 1));
+        } else {
+          fetchFeedback();
+        }
       }
     } catch (error) {
       console.error(error);

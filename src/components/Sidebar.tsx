@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useTheme } from "@/components/ThemeProvider";
 import { 
@@ -18,7 +18,8 @@ import {
   Sun,
   Moon,
   Menu,
-  X
+  X,
+  Search
 } from "lucide-react";
 
 interface SidebarProps {
@@ -32,9 +33,32 @@ interface SidebarProps {
 
 export default function Sidebar({ user }: SidebarProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const { isDarkMode, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [pendingCount, setPendingCount] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSidebarSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+    const q = searchQuery.trim().toLowerCase();
+
+    if (q.includes("setting") || q.includes("config") || q.includes("theme") || q.includes("integration") || q.includes("team")) {
+      router.push("/settings");
+    } else if (q.includes("ask") || q.includes("ai") || q.includes("chat") || q.includes("bot")) {
+      router.push("/ask");
+    } else if (q.includes("trend") || q.includes("chart") || q.includes("analytic")) {
+      router.push("/trends");
+    } else if (q.includes("report") || q.includes("voc") || q.includes("pdf")) {
+      router.push("/reports");
+    } else if (q.includes("dashboard") || q.includes("home") || q.includes("overview")) {
+      router.push("/dashboard");
+    } else {
+      router.push(`/inbox?query=${encodeURIComponent(searchQuery.trim())}`);
+    }
+    setMobileOpen(false);
+  };
 
   // Close mobile drawer on route navigation & fetch dynamic inbox count
   useEffect(() => {
@@ -144,18 +168,24 @@ export default function Sidebar({ user }: SidebarProps) {
         </div>
 
         {/* Search */}
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800/40">
-          <div className="relative">
+        <form onSubmit={handleSidebarSearch} className="p-4 border-b border-slate-200 dark:border-slate-800/40">
+          <div className="relative flex items-center">
             <input
               type="text"
-              placeholder="Search..."
-              className="w-full px-3 py-2 text-xs bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search features or logs..."
+              className="w-full pl-3 pr-8 py-2 text-xs bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
             />
-            <span className="absolute right-2.5 top-2 text-[10px] text-slate-400 dark:text-slate-500 font-mono bg-slate-200/60 dark:bg-slate-800/60 px-1.5 py-0.5 rounded">
-              ⌘K
-            </span>
+            <button
+              type="submit"
+              className="absolute right-2.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 p-0.5 transition"
+              title="Search"
+            >
+              <Search className="h-3.5 w-3.5" />
+            </button>
           </div>
-        </div>
+        </form>
 
         {/* Navigation */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
