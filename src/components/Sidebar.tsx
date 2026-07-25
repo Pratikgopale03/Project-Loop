@@ -34,15 +34,33 @@ export default function Sidebar({ user }: SidebarProps) {
   const pathname = usePathname();
   const { isDarkMode, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [pendingCount, setPendingCount] = useState<number | null>(null);
 
-  // Close mobile drawer on route navigation
+  // Close mobile drawer on route navigation & fetch dynamic inbox count
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch("/api/feedback/stats");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data.pendingTriage === "number") {
+            setPendingCount(data.pendingTriage);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch sidebar stats:", err);
+      }
+    }
+    fetchStats();
+  }, []);
+
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Inbox", href: "/inbox", icon: Inbox, badge: "48" },
+    { name: "Inbox", href: "/inbox", icon: Inbox, badge: pendingCount !== null ? String(pendingCount) : "..." },
     { name: "Trends", href: "/trends", icon: TrendingUp },
     { name: "Ask LOOP", href: "/ask", icon: MessageSquare },
     { name: "Reports", href: "/reports", icon: FileText },
