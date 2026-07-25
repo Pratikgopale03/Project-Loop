@@ -123,11 +123,12 @@ export default function AskPage() {
     }
   };
 
-  // 🎨 Clean Markdown Answer Formatter
-  const renderFormattedAnswer = (rawAnswer: string) => {
-    const lines = rawAnswer.split("\n").filter((line) => line.trim() !== "");
+  // Custom parser to format markdown bold (**text**) and bullet points (• or -) into JSX
+  const renderFormattedAnswer = (text: string) => {
+    const lines = text.split("\n").filter((line) => line.trim().length > 0);
+
     return (
-      <div className="space-y-3 font-sans text-xs md:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
+      <div className="space-y-3.5 font-sans text-sm md:text-base text-slate-800 dark:text-slate-200 leading-relaxed">
         {lines.map((line, idx) => {
           let cleanLine = line.trim();
 
@@ -251,29 +252,29 @@ export default function AskPage() {
           <div className="flex-1 overflow-y-auto pr-2 space-y-6 min-h-0">
             {history.map((turn, index) => (
               <div key={index} className="space-y-4 animate-in fade-in duration-200">
-                {/* User Prompt Bubble (Right Aligned) */}
+                {/* User Prompt Bubble (Right Aligned - Enlarged Box & Text) */}
                 <div className="flex justify-end items-center gap-2">
-                  <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-500 text-white font-semibold text-xs py-3 px-5 rounded-2xl rounded-tr-xs shadow-md shadow-indigo-500/15 max-w-lg leading-relaxed">
+                  <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-500 text-white font-semibold text-sm md:text-base py-3.5 px-6 rounded-2xl rounded-tr-xs shadow-lg shadow-indigo-500/20 max-w-2xl leading-relaxed tracking-wide">
                     {turn.question}
                   </div>
-                  <div className="w-7 h-7 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center text-xs font-bold shrink-0 border border-slate-300 dark:border-slate-700">
-                    <User className="h-3.5 w-3.5" />
+                  <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center text-xs font-bold shrink-0 border border-slate-300 dark:border-slate-700">
+                    <User className="h-4 w-4" />
                   </div>
                 </div>
 
-                {/* AI Answer Card (Left Aligned) */}
-                <div className="bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 md:p-6 space-y-4 shadow-lg shadow-slate-200/50 dark:shadow-none backdrop-blur-md max-w-3xl">
+                {/* AI Answer Card (Left Aligned - Enlarged Container & Readability) */}
+                <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 space-y-5 shadow-xl shadow-slate-200/60 dark:shadow-none backdrop-blur-md w-full max-w-4xl border-slate-200/90 dark:border-slate-800">
                   {/* AI Card Header */}
                   <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/20">
+                      <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/20">
                         <Bot className="h-4 w-4" />
                       </div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-white tracking-wide">
+                      <span className="text-sm font-bold text-slate-900 dark:text-white tracking-wide">
                         LOOP AI Intelligence
                       </span>
                     </div>
-                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+                    <span className="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
                       Grounded Answer
                     </span>
                   </div>
@@ -343,8 +344,8 @@ export default function AskPage() {
           </div>
         )}
 
-        {/* Fixed Bottom Input Bar (Enlarged Container) */}
-        <div className="shrink-0 pt-3 pb-2">
+        {/* Fixed Bottom Input Bar (Sleek Standard Size) */}
+        <div className="shrink-0 pt-2 pb-1">
           {error && (
             <div className="mb-3 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs p-3 rounded-xl flex items-center gap-2">
               <AlertCircle className="h-4 w-4 shrink-0" />
@@ -352,26 +353,23 @@ export default function AskPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex gap-3 items-center bg-white dark:bg-slate-900/95 border-2 border-slate-200 dark:border-slate-800/90 p-2.5 sm:p-3 md:p-3.5 rounded-2xl md:rounded-3xl shadow-2xl shadow-indigo-500/10 dark:shadow-none backdrop-blur-xl focus-within:border-indigo-500 dark:focus-within:border-indigo-400 transition-all duration-200">
-            <div className="pl-2.5 text-indigo-500 dark:text-indigo-400 shrink-0">
-              <Sparkles className="h-5 w-5 animate-pulse" />
-            </div>
+          <form onSubmit={handleSubmit} className="flex gap-3 items-center bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 p-2 rounded-2xl shadow-xl backdrop-blur-md focus-within:border-indigo-500 transition-colors">
             <input
               type="text"
               required
               disabled={loading}
-              placeholder="Ask a question about user feedback, sentiment, or feature requests..."
+              placeholder="Ask a question about user feedback..."
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              className="flex-1 px-3 py-3 md:py-3.5 bg-transparent text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none text-sm md:text-base font-semibold disabled:opacity-50"
+              className="flex-1 px-4 py-2.5 bg-transparent text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none text-xs md:text-sm font-medium disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={loading || !question.trim()}
-              className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 text-white font-black py-3 px-6 md:py-3.5 md:px-8 rounded-xl md:rounded-2xl text-xs md:text-sm flex items-center gap-2 transition-all shadow-xl shadow-indigo-500/25 border border-indigo-400/30 shrink-0 hover:scale-[1.02] active:scale-[0.98]"
+              className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-2 transition shadow-lg shadow-indigo-500/20 border border-indigo-400/20 shrink-0"
             >
-              <span>Ask LOOP</span>
-              <Send className="h-4 w-4" />
+              <span>Ask</span>
+              <Send className="h-3.5 w-3.5" />
             </button>
           </form>
         </div>
