@@ -103,37 +103,37 @@ export default function Sidebar({ user }: SidebarProps) {
       )}
 
       {/* Main Sidebar Drawer (Desktop permanent + Mobile slide-over) */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-slate-800/80 bg-[#0b0d17] dark:bg-[#0b0d17] flex flex-col h-full shrink-0 transition-transform duration-300 ease-in-out md:static md:translate-x-0 print:hidden ${
+      <aside className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#0b0d17] flex flex-col h-full shrink-0 transition-transform duration-300 ease-in-out md:static md:translate-x-0 print:hidden ${
         mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       }`}>
         {/* Brand Header */}
-        <div className="h-16 px-5 border-b border-slate-800/60 flex items-center justify-between">
+        <div className="h-16 px-5 border-b border-slate-200 dark:border-slate-800/60 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="bg-gradient-to-tr from-indigo-600 to-violet-500 w-8 h-8 rounded-xl text-white font-black flex items-center justify-center text-lg shadow-lg shadow-indigo-500/30">
               L
             </div>
-            <span className="font-black text-xl tracking-tight text-white">
+            <span className="font-black text-xl tracking-tight text-slate-900 dark:text-white">
               LOOP
             </span>
           </div>
           <button
             type="button"
             onClick={() => setMobileOpen(false)}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-200 md:hidden"
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 md:hidden"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Search */}
-        <div className="p-4 border-b border-slate-800/40">
+        <div className="p-4 border-b border-slate-200 dark:border-slate-800/40">
           <div className="relative">
             <input
               type="text"
               placeholder="Search..."
-              className="w-full px-3 py-2 text-xs bg-slate-900/90 border border-slate-800 rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-2 text-xs bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
             />
-            <span className="absolute right-2.5 top-2 text-[10px] text-slate-500 font-mono bg-slate-800/60 px-1.5 py-0.5 rounded">
+            <span className="absolute right-2.5 top-2 text-[10px] text-slate-400 dark:text-slate-500 font-mono bg-slate-200/60 dark:bg-slate-800/60 px-1.5 py-0.5 rounded">
               ⌘K
             </span>
           </div>
@@ -151,7 +151,7 @@ export default function Sidebar({ user }: SidebarProps) {
                 className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition ${
                   isActive
                     ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/25 border border-indigo-400/20"
-                    : "text-slate-400 hover:bg-slate-900/60 hover:text-slate-200"
+                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900/60 hover:text-slate-900 dark:hover:text-slate-200"
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -160,7 +160,9 @@ export default function Sidebar({ user }: SidebarProps) {
                 </div>
                 {item.badge && (
                   <span className={`px-2 py-0.5 text-[10px] font-black rounded-full ${
-                    isActive ? "bg-white/20 text-white" : "bg-slate-800 text-indigo-400 border border-indigo-500/20"
+                    isActive
+                      ? "bg-white/20 text-white"
+                      : "bg-indigo-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20"
                   }`}>
                     {item.badge}
                   </span>
@@ -171,13 +173,13 @@ export default function Sidebar({ user }: SidebarProps) {
         </nav>
 
         {/* User Footer Profile */}
-        <div className="p-4 border-t border-slate-800/80 bg-slate-950/60">
+        <div className="p-4 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950/60">
           <div className="flex items-center gap-3 px-1 py-1">
-            <div className="bg-slate-800 rounded-full p-2 text-slate-400 shrink-0 border border-slate-700/50">
-              <UserIcon className="h-4 w-4 text-slate-300" />
+            <div className="bg-slate-200 dark:bg-slate-800 rounded-full p-2 text-slate-600 dark:text-slate-400 shrink-0 border border-slate-300 dark:border-slate-700/50">
+              <UserIcon className="h-4 w-4 text-slate-700 dark:text-slate-300" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-bold text-slate-200 truncate">
+              <p className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">
                 {user.name || "User"}
               </p>
               <span className={`inline-block px-1.5 py-0.5 text-[9px] font-extrabold rounded-md mt-0.5 uppercase tracking-wider ${getRoleBadge(user.role)}`}>
@@ -191,12 +193,12 @@ export default function Sidebar({ user }: SidebarProps) {
             <button
               type="button"
               onClick={toggleTheme}
-              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 text-slate-400 hover:text-slate-200 rounded-xl text-xs font-bold transition"
+              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 rounded-xl text-xs font-bold transition shadow-sm dark:shadow-none"
             >
               {isDarkMode ? (
-                <Sun className="h-3.5 w-3.5 text-rose-400 shrink-0" />
+                <Sun className="h-3.5 w-3.5 text-amber-400 shrink-0" />
               ) : (
-                <Moon className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                <Moon className="h-3.5 w-3.5 text-indigo-600 shrink-0" />
               )}
               Theme
             </button>
@@ -204,7 +206,7 @@ export default function Sidebar({ user }: SidebarProps) {
             <button
               type="button"
               onClick={() => signOut({ callbackUrl: "/login" })}
-              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 text-slate-400 hover:text-rose-400 rounded-xl text-xs font-bold transition"
+              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded-xl text-xs font-bold transition shadow-sm dark:shadow-none"
             >
               <LogOut className="h-3.5 w-3.5 text-rose-500 shrink-0" />
               Log Out
