@@ -190,12 +190,13 @@ export default function DashboardPage() {
               className="bg-transparent border-none text-slate-700 dark:text-slate-300 focus:outline-none cursor-pointer text-xs font-medium"
             >
               <option value="ALL" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">All Channels</option>
-              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Email</option>
-              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Support Ticket</option>
-              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">App Store Review</option>
-              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">NPS Survey</option>
-              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Sales Call Notes</option>
-              <option className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Twitter Mention</option>
+              <option value="Email" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Email</option>
+              <option value="Support Ticket" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Support Ticket</option>
+              <option value="App Store Review" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">App Store Review</option>
+              <option value="NPS Survey" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">NPS Survey</option>
+              <option value="Sales Call Notes" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Sales Call Notes</option>
+              <option value="Twitter Mention" className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">Twitter Mention</option>
+              <option value="OTHER" className="bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 font-bold">Other Channels (Zomato, Swiggy, Uber, etc.)</option>
             </select>
           </div>
         </div>

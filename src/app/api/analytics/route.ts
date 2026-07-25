@@ -28,8 +28,16 @@ export async function GET(request: Request) {
       },
     };
 
+    const knownChannels = ["Email", "Support Ticket", "App Store Review", "NPS Survey", "Sales Call Notes", "Twitter Mention"];
+
     if (channel && channel !== "ALL") {
-      whereClause.channel = channel;
+      if (channel === "OTHER") {
+        whereClause.channel = {
+          notIn: knownChannels,
+        };
+      } else {
+        whereClause.channel = channel;
+      }
     }
 
     const [total, positive, negative, pending, items, themes] = await Promise.all([

@@ -153,8 +153,16 @@ export async function GET(request: Request) {
       workspaceId: targetWorkspaceId,
     };
 
+    const knownChannels = ["Email", "Support Ticket", "App Store Review", "NPS Survey", "Sales Call Notes", "Twitter Mention"];
+
     if (channel && channel !== "ALL") {
-      whereClause.channel = channel;
+      if (channel === "OTHER") {
+        whereClause.channel = {
+          notIn: knownChannels,
+        };
+      } else {
+        whereClause.channel = channel;
+      }
     }
     if (sentiment && sentiment !== "ALL") {
       whereClause.sentiment = sentiment;
