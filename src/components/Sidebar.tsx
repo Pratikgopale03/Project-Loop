@@ -125,8 +125,8 @@ export default function Sidebar({ user }: SidebarProps) {
           </button>
         </div>
 
-        {/* Search & Add Feedback Actions */}
-        <div className="p-4 space-y-3 border-b border-slate-800/40">
+        {/* Search */}
+        <div className="p-4 border-b border-slate-800/40">
           <div className="relative">
             <input
               type="text"
@@ -137,13 +137,6 @@ export default function Sidebar({ user }: SidebarProps) {
               ⌘K
             </span>
           </div>
-
-          <Link
-            href="/inbox"
-            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-indigo-500/25 border border-indigo-400/20"
-          >
-            <span className="text-sm font-black">+</span> Add feedback
-          </Link>
         </div>
 
         {/* Navigation */}
