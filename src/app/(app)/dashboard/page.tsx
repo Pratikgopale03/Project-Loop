@@ -147,50 +147,52 @@ export default function DashboardPage() {
     return () => clearInterval(tickerInterval);
   }, []);
 
+  const userName = session?.user?.name || "Alice";
+
   return (
     <div className="space-y-6">
-      {/* Top Header */}
+      {/* Top Header matching Screenshot 1 */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:bg-gradient-to-r dark:from-slate-100 dark:to-slate-300 dark:bg-clip-text dark:text-transparent">
-            Workspace Analytics
+          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
+            Good afternoon, {userName} — you have {stats.pendingTriage || 19} items needing review.
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-            Real-time trends, sentiment metrics, and automated classification for your feedback.
-          </p>
         </div>
 
-        {/* Global Dashboard Filters */}
+        {/* Global Sync Status & Filters */}
         <div className="flex flex-wrap gap-3 items-center">
-          <div className="flex items-center gap-2 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-700 dark:text-slate-300 transition-colors duration-300">
-            <Calendar className="h-3.5 w-3.5 text-indigo-400" />
+          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3 py-2 text-xs font-semibold text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-[#ff5538] animate-pulse" />
+            <span>Last synced: 2 min ago</span>
+          </div>
+
+          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3 py-2 text-xs text-slate-300">
+            <Calendar className="h-3.5 w-3.5 text-[#ff5538]" />
             <select
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value)}
-              className="bg-transparent border-none text-slate-700 dark:text-slate-300 focus:outline-none cursor-pointer"
-              style={{ colorScheme: isDarkMode ? "dark" : "light" }}
+              className="bg-transparent border-none text-slate-300 focus:outline-none cursor-pointer text-xs font-medium"
             >
-              <option value="7d" style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>Last 7 Days</option>
-              <option value="30d" style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>Last 30 Days</option>
-              <option value="90d" style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>Last 90 Days</option>
+              <option value="7d" className="bg-slate-900 text-slate-200">Last 7 Days</option>
+              <option value="30d" className="bg-slate-900 text-slate-200">Last 30 Days</option>
+              <option value="90d" className="bg-slate-900 text-slate-200">Last 90 Days</option>
             </select>
           </div>
 
-          <div className="flex items-center gap-2 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-700 dark:text-slate-300 transition-colors duration-300">
-            <Filter className="h-3.5 w-3.5 text-indigo-400" />
+          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800/80 rounded-xl px-3 py-2 text-xs text-slate-300">
+            <Filter className="h-3.5 w-3.5 text-[#ff5538]" />
             <select
               value={channel}
               onChange={(e) => setChannel(e.target.value)}
-              className="bg-transparent border-none text-slate-700 dark:text-slate-300 focus:outline-none cursor-pointer"
-              style={{ colorScheme: isDarkMode ? "dark" : "light" }}
+              className="bg-transparent border-none text-slate-300 focus:outline-none cursor-pointer text-xs font-medium"
             >
-              <option value="ALL" style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>All Channels</option>
-              <option style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>Email</option>
-              <option style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>Support Ticket</option>
-              <option style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>App Store Review</option>
-              <option style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>NPS Survey</option>
-              <option style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>Sales Call Notes</option>
-              <option style={{ backgroundColor: isDarkMode ? "#0f172a" : "#ffffff", color: isDarkMode ? "#e2e8f0" : "#1e293b" }}>Twitter Mention</option>
+              <option value="ALL" className="bg-slate-900 text-slate-200">All Channels</option>
+              <option className="bg-slate-900 text-slate-200">Email</option>
+              <option className="bg-slate-900 text-slate-200">Support Ticket</option>
+              <option className="bg-slate-900 text-slate-200">App Store Review</option>
+              <option className="bg-slate-900 text-slate-200">NPS Survey</option>
+              <option className="bg-slate-900 text-slate-200">Sales Call Notes</option>
+              <option className="bg-slate-900 text-slate-200">Twitter Mention</option>
             </select>
           </div>
         </div>
