@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { 
   MessageSquare, 
   Send, 
@@ -299,34 +300,26 @@ export default function AskPage() {
                         <span>Citations ({turn.citations.length} sources parsed)</span>
                       </button>
 
-                      {/* Expanded Citation Cards */}
+                      {/* Expanded Citation Cards matching Image 2 */}
                       {expandedCitations[index] && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 animate-in fade-in duration-200">
-                          {turn.citations.map((cite, idx) => (
+                        <div className="space-y-3 mt-3 animate-in fade-in duration-200">
+                          {turn.citations.map((cite) => (
                             <div 
                               key={cite.id}
-                              className="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 p-4 rounded-xl text-xs space-y-2.5 relative hover:border-indigo-400 dark:hover:border-slate-700 transition shadow-sm"
+                              className="bg-slate-50 dark:bg-[#0f121d] border border-slate-200 dark:border-slate-800 p-4 rounded-xl text-xs space-y-2 relative shadow-sm"
                             >
-                              <div className="flex justify-between items-center text-[9px] text-slate-400 dark:text-slate-500 font-medium">
-                                <span className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-300 border border-slate-200 dark:border-indigo-500/20 font-bold">
-                                  {cite.channel}
-                                </span>
-                                <span>[Feedback #{idx + 1}]</span>
-                              </div>
-                              
-                              <p className="text-slate-700 dark:text-slate-300 text-[11px] leading-relaxed italic">
-                                "{cite.content.length > 140 ? cite.content.slice(0, 140) + "..." : cite.content}"
+                              <p className="text-slate-700 dark:text-slate-300 text-xs leading-relaxed italic">
+                                "{cite.content}"
                               </p>
 
-                              <div className="flex justify-between items-center pt-1 text-[9px]">
-                                {cite.customerLabel && (
-                                  <span className="text-indigo-600 dark:text-violet-400 font-bold truncate max-w-[120px]">
-                                    @ {cite.customerLabel}
-                                  </span>
-                                )}
-                                <span className={`font-bold tracking-wider px-1.5 rounded uppercase ${getSentimentStyle(cite.sentiment)}`}>
-                                  {cite.sentiment}
-                                </span>
+                              <div className="flex items-center justify-between pt-1 border-t border-slate-200/60 dark:border-slate-800/60 text-[10px] text-slate-400 dark:text-slate-500">
+                                <span>Source ID: <code className="font-mono text-slate-600 dark:text-slate-300">{cite.id.slice(0, 8)}</code></span>
+                                <Link
+                                  href="/inbox"
+                                  className="text-indigo-600 dark:text-indigo-400 hover:underline font-bold flex items-center gap-1"
+                                >
+                                  Inspect Log &rarr;
+                                </Link>
                               </div>
                             </div>
                           ))}
