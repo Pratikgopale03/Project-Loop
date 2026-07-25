@@ -168,21 +168,33 @@ export default function Sidebar({ user }: SidebarProps) {
             </div>
           </div>
 
-          {/* Toggles & SignOut controls */}
-          <div className="flex gap-2 mt-4">
-            <button
-              onClick={toggleTheme}
-              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/30 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 rounded-lg text-xs font-semibold transition"
+          {/* Toggles, Settings & SignOut controls */}
+          <div className="flex gap-1.5 mt-4">
+            <Link
+              href="/settings"
+              className={`flex-1 flex items-center justify-center gap-1 px-2 py-2 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/30 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 rounded-lg text-xs font-semibold transition ${
+                pathname === "/settings" ? "border-indigo-500/50 text-indigo-500 font-bold" : ""
+              }`}
             >
-              {isDarkMode ? <Sun className="h-3.5 w-3.5 text-amber-500" /> : <Moon className="h-3.5 w-3.5 text-indigo-550" />}
+              <Settings className="h-3.5 w-3.5 text-indigo-500 shrink-0" />
+              Settings
+            </Link>
+
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="flex-1 flex items-center justify-center gap-1 px-2 py-2 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/30 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 rounded-lg text-xs font-semibold transition"
+            >
+              {isDarkMode ? <Sun className="h-3.5 w-3.5 text-amber-500 shrink-0" /> : <Moon className="h-3.5 w-3.5 text-indigo-500 shrink-0" />}
               Theme
             </button>
 
             <button
+              type="button"
               onClick={() => signOut({ callbackUrl: "/login" })}
-              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/30 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 rounded-lg text-xs font-semibold transition"
+              className="flex-1 flex items-center justify-center gap-1 px-2 py-2 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/30 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 rounded-lg text-xs font-semibold transition"
             >
-              <LogOut className="h-3.5 w-3.5 text-rose-500" />
+              <LogOut className="h-3.5 w-3.5 text-rose-500 shrink-0" />
               Log Out
             </button>
           </div>
