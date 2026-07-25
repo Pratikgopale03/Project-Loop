@@ -164,7 +164,6 @@ export default function DashboardPage() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Live Ingestion Active
             </span>
-            <span>• Continuous multi-channel customer intelligence</span>
           </p>
         </div>
 

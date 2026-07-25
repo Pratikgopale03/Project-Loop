@@ -455,22 +455,22 @@ export default function SettingsPage() {
       {activeTab === "integrations" && (
         <div className="space-y-6 animate-in fade-in duration-200">
           <div>
-            <h2 className="text-2xl font-bold text-slate-100">Integrations Configurations</h2>
-            <p className="text-slate-400 text-sm mt-1 max-w-xl leading-relaxed">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Integrations Configurations</h2>
+            <p className="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-xl leading-relaxed">
               Connect LOOP directly to your customer interaction channels. Classified logs are ingested automatically upon creation.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
             {/* Apple App Store */}
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md">
+            <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md shadow-sm dark:shadow-none">
               <div className="flex items-center gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-500 flex items-center justify-center font-bold text-lg">
                   A
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-100">Apple App Store reviews</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">Sync app reviews weekly</p>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">Apple App Store reviews</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Sync app reviews weekly</p>
                 </div>
               </div>
 
@@ -478,7 +478,7 @@ export default function SettingsPage() {
                 type="button"
                 onClick={() => toggleIntegration("appStore")}
                 className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 ${
-                  integrations.appStore ? "bg-rose-500" : "bg-slate-800"
+                  integrations.appStore ? "bg-gradient-to-r from-indigo-600 to-violet-600" : "bg-slate-300 dark:bg-slate-800"
                 }`}
               >
                 <div
@@ -490,14 +490,14 @@ export default function SettingsPage() {
             </div>
 
             {/* Zendesk Tickets */}
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md">
+            <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md shadow-sm dark:shadow-none">
               <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg">
                   Z
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-100">Zendesk Tickets</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">Ingest closed tickets daily</p>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">Zendesk Tickets</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Ingest closed tickets daily</p>
                 </div>
               </div>
 
@@ -505,7 +505,7 @@ export default function SettingsPage() {
                 type="button"
                 onClick={() => toggleIntegration("zendesk")}
                 className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 ${
-                  integrations.zendesk ? "bg-rose-500" : "bg-slate-800"
+                  integrations.zendesk ? "bg-gradient-to-r from-indigo-600 to-violet-600" : "bg-slate-300 dark:bg-slate-800"
                 }`}
               >
                 <div
@@ -517,14 +517,14 @@ export default function SettingsPage() {
             </div>
 
             {/* Twitter/X Mentions */}
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md">
+            <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md shadow-sm dark:shadow-none">
               <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-lg">
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">
                   X
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-100">Twitter/X Mentions</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">Realtime search sync for company handles</p>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">Twitter/X Mentions</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Realtime search sync for company handles</p>
                 </div>
               </div>
 
@@ -532,7 +532,7 @@ export default function SettingsPage() {
                 type="button"
                 onClick={() => toggleIntegration("twitter")}
                 className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 ${
-                  integrations.twitter ? "bg-rose-500" : "bg-slate-800"
+                  integrations.twitter ? "bg-gradient-to-r from-indigo-600 to-violet-600" : "bg-slate-300 dark:bg-slate-800"
                 }`}
               >
                 <div
@@ -544,14 +544,14 @@ export default function SettingsPage() {
             </div>
 
             {/* Zomato Reviews */}
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md">
+            <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md shadow-sm dark:shadow-none">
               <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-lg">
+                <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center font-bold text-lg">
                   🍕
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-100">Zomato Food Reviews</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">Auto-sync customer food reviews</p>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">Zomato Food Reviews</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Auto-sync customer food reviews</p>
                 </div>
               </div>
 
@@ -559,7 +559,7 @@ export default function SettingsPage() {
                 type="button"
                 onClick={() => toggleIntegration("zomato")}
                 className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 ${
-                  integrations.zomato ? "bg-rose-500" : "bg-slate-800"
+                  integrations.zomato ? "bg-gradient-to-r from-indigo-600 to-violet-600" : "bg-slate-300 dark:bg-slate-800"
                 }`}
               >
                 <div
@@ -571,14 +571,14 @@ export default function SettingsPage() {
             </div>
 
             {/* Swiggy Instamart */}
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md">
+            <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md shadow-sm dark:shadow-none">
               <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-500 flex items-center justify-center font-bold text-lg">
                   🛵
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-100">Swiggy Instamart</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">Realtime delivery order logs</p>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">Swiggy Instamart</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Realtime delivery order logs</p>
                 </div>
               </div>
 
@@ -586,7 +586,7 @@ export default function SettingsPage() {
                 type="button"
                 onClick={() => toggleIntegration("swiggy")}
                 className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 ${
-                  integrations.swiggy ? "bg-rose-500" : "bg-slate-800"
+                  integrations.swiggy ? "bg-gradient-to-r from-indigo-600 to-violet-600" : "bg-slate-300 dark:bg-slate-800"
                 }`}
               >
                 <div
@@ -598,14 +598,14 @@ export default function SettingsPage() {
             </div>
 
             {/* Uber Driver Feedback */}
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md">
+            <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 backdrop-blur-md shadow-sm dark:shadow-none">
               <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg">
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">
                   🚗
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-100">Uber Driver Feedback</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">Ride quality & cancellation sync</p>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">Uber Driver Feedback</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Ride quality & cancellation sync</p>
                 </div>
               </div>
 
@@ -613,7 +613,7 @@ export default function SettingsPage() {
                 type="button"
                 onClick={() => toggleIntegration("uber")}
                 className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 ${
-                  integrations.uber ? "bg-rose-500" : "bg-slate-800"
+                  integrations.uber ? "bg-gradient-to-r from-indigo-600 to-violet-600" : "bg-slate-300 dark:bg-slate-800"
                 }`}
               >
                 <div
@@ -626,12 +626,12 @@ export default function SettingsPage() {
           </div>
 
           {/* Webhook Dispatch Section */}
-          <div className="max-w-3xl p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4 backdrop-blur-md">
+          <div className="max-w-3xl p-6 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-4 backdrop-blur-md shadow-sm dark:shadow-none">
             <div>
-              <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <span>💬</span> Slack & Discord Incoming Webhook URL
               </h3>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 Dispatch real-time emergency alert payloads directly to your team's Slack or Discord channel.
               </p>
             </div>
@@ -642,13 +642,13 @@ export default function SettingsPage() {
                 value={webhookUrl}
                 onChange={(e) => setWebhookUrl(e.target.value)}
                 placeholder="https://hooks.slack.com/services/T000/B000/XXXX"
-                className="flex-1 px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-xs font-mono focus:outline-none focus:border-rose-500 transition-colors"
+                className="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100 text-xs font-mono focus:outline-none focus:border-indigo-500 transition-colors"
               />
               <button
                 type="button"
                 onClick={handleSaveWebhook}
                 disabled={testFiring}
-                className="flex items-center justify-center gap-2 px-5 py-3 bg-rose-500 hover:bg-rose-600 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition shrink-0 shadow-lg shadow-rose-500/20"
+                className="flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition shrink-0 shadow-lg shadow-indigo-500/20"
               >
                 <Zap className="h-4 w-4" />
                 {testFiring ? "Saving Webhook..." : "Save Webhook"}
@@ -663,21 +663,21 @@ export default function SettingsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-in fade-in duration-200">
           {/* Left: Add Member Form (ADMIN only) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md">
-              <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-200">
-                <UserPlus className="h-5 w-5 text-indigo-400" />
+            <div className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-sm dark:shadow-none">
+              <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-900 dark:text-slate-200">
+                <UserPlus className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
                 Invite Team Member
               </h2>
-              <p className="text-slate-400 text-xs mt-1">
+              <p className="text-slate-500 dark:text-slate-400 text-xs mt-1">
                 Add a user directly to this tenant workspace.
               </p>
 
               {isReadOnly ? (
-                <div className="mt-4 bg-amber-500/5 border border-amber-500/10 text-amber-400 text-xs p-4 rounded-lg flex gap-3 items-start">
+                <div className="mt-4 bg-amber-500/5 border border-amber-500/10 text-amber-600 dark:text-amber-400 text-xs p-4 rounded-lg flex gap-3 items-start">
                   <ShieldAlert className="h-4.5 w-4.5 shrink-0 text-amber-500 mt-0.5" />
                   <div>
                     <p className="font-semibold">ADMIN Role Required</p>
-                    <p className="text-slate-400 mt-1 leading-relaxed">
+                    <p className="text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
                       You are signed in as an **{userRole}**. Only workspace administrators can manage or create member accounts.
                     </p>
                   </div>
@@ -685,14 +685,14 @@ export default function SettingsPage() {
               ) : (
                 <>
                   {formSuccess && (
-                    <div className="mt-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs p-3 rounded-lg flex items-center gap-2">
+                    <div className="mt-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs p-3 rounded-lg flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 shrink-0" />
                       {formSuccess}
                     </div>
                   )}
 
                   {formError && (
-                    <div className="mt-4 bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs p-3 rounded-lg flex items-center gap-2">
+                    <div className="mt-4 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs p-3 rounded-lg flex items-center gap-2">
                       <AlertCircle className="h-4 w-4 shrink-0" />
                       {formError}
                     </div>
@@ -700,7 +700,7 @@ export default function SettingsPage() {
 
                   <form onSubmit={handleAddMember} className="mt-4 space-y-4">
                     <div>
-                      <label className="block text-xs font-medium text-slate-400 mb-1">
+                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-400 mb-1">
                         Full Name *
                       </label>
                       <input
@@ -709,12 +709,12 @@ export default function SettingsPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Jane Smith"
-                        className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-sm focus:outline-none focus:border-rose-500 transition-colors"
+                        className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-medium text-slate-400 mb-1">
+                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-400 mb-1">
                         Email Address *
                       </label>
                       <input
@@ -723,12 +723,12 @@ export default function SettingsPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="jane@company.com"
-                        className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-sm focus:outline-none focus:border-rose-500 transition-colors"
+                        className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-medium text-slate-400 mb-1">
+                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-400 mb-1">
                         Initial Password *
                       </label>
                       <input
@@ -737,29 +737,29 @@ export default function SettingsPage() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••"
-                        className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-sm focus:outline-none focus:border-rose-500 transition-colors"
+                        className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-medium text-slate-400 mb-1">
+                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-400 mb-1">
                         Workspace Role *
                       </label>
                       <select
                         value={role}
                         onChange={(e) => setRole(e.target.value)}
-                        className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-sm focus:outline-none focus:border-rose-500 cursor-pointer transition-colors"
+                        className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-200 text-sm focus:outline-none focus:border-indigo-500 cursor-pointer transition-colors"
                       >
-                        <option value="VIEWER">VIEWER (Read-Only)</option>
-                        <option value="ANALYST">ANALYST (Ingest & Triage)</option>
-                        <option value="ADMIN">ADMIN (Full Workspace Control)</option>
+                        <option value="VIEWER" className="bg-white dark:bg-slate-900">VIEWER (Read-Only)</option>
+                        <option value="ANALYST" className="bg-white dark:bg-slate-900">ANALYST (Ingest & Triage)</option>
+                        <option value="ADMIN" className="bg-white dark:bg-slate-900">ADMIN (Full Workspace Control)</option>
                       </select>
                     </div>
 
                     <button
                       type="submit"
                       disabled={formLoading}
-                      className="w-full flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 py-3 px-4 rounded-xl font-bold text-sm text-white transition disabled:opacity-50 shadow-lg shadow-rose-500/20"
+                      className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 py-3 px-4 rounded-xl font-bold text-sm text-white transition disabled:opacity-50 shadow-lg shadow-indigo-500/20"
                     >
                       {formLoading ? "Adding User..." : "Create Team Member"}
                     </button>
@@ -771,30 +771,30 @@ export default function SettingsPage() {
 
           {/* Right: Team Members List */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md">
-              <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-200 mb-4">
-                <Users className="h-5 w-5 text-indigo-400" />
+            <div className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 backdrop-blur-md shadow-sm dark:shadow-none">
+              <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-900 dark:text-slate-200 mb-4">
+                <Users className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
                 Active Workspace Members
               </h2>
 
               {loading ? (
                 <div className="space-y-3">
                   {[1, 2, 3].map((i) => (
-                    <div key={i} className="h-14 bg-slate-900/50 border border-slate-850 rounded-lg animate-pulse" />
+                    <div key={i} className="h-14 bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-850 rounded-lg animate-pulse" />
                   ))}
                 </div>
               ) : (
-                <div className="max-h-64 overflow-y-auto divide-y divide-slate-800 pr-1">
+                <div className="max-h-64 overflow-y-auto divide-y divide-slate-200 dark:divide-slate-800 pr-1">
                   {members.map((member) => {
                     const isSelf = member.id === session?.user?.id;
                     return (
                       <div key={member.id} className="py-3.5 flex items-center justify-between first:pt-0 last:pb-0 gap-3">
                         <div className="flex items-center gap-3 min-w-0">
-                          <div className="p-2 rounded-full bg-slate-950 border border-slate-800 text-slate-400 shrink-0">
+                          <div className="p-2 rounded-full bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 shrink-0">
                             <UserCheck className="h-4 w-4" />
                           </div>
                           <div className="min-w-0">
-                            <p className="text-sm font-semibold text-slate-200 truncate">{member.name}</p>
+                            <p className="text-sm font-semibold text-slate-900 dark:text-slate-200 truncate">{member.name}</p>
                             <p className="text-xs text-slate-500 truncate">{member.email}</p>
                           </div>
                         </div>
@@ -811,7 +811,7 @@ export default function SettingsPage() {
                             <button
                               type="button"
                               onClick={() => setDeleteConfirmMember({ id: member.id, name: member.name, email: member.email })}
-                              className="p-1.5 text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 rounded-md transition"
+                              className="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-md transition"
                               title={`Remove ${member.name}`}
                             >
                               <Trash2 className="h-3.5 w-3.5" />
