@@ -255,13 +255,13 @@ export default function SettingsPage() {
       </div>
 
       {/* Tabs Bar */}
-      <div className="flex border-b border-slate-800 gap-6 text-sm font-medium overflow-x-auto">
+      <div className="flex border-b border-slate-200 dark:border-slate-800 gap-6 text-sm font-medium overflow-x-auto">
         <button
           onClick={() => setActiveTab("preferences")}
           className={`pb-3 px-1 transition border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeTab === "preferences"
-              ? "border-rose-500 text-rose-400 font-semibold"
-              : "border-transparent text-slate-400 hover:text-slate-200"
+              ? "border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-bold"
+              : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
           }`}
         >
           <Building className="h-4 w-4" />
@@ -272,8 +272,8 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("profile")}
           className={`pb-3 px-1 transition border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeTab === "profile"
-              ? "border-rose-500 text-rose-400 font-semibold"
-              : "border-transparent text-slate-400 hover:text-slate-200"
+              ? "border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-bold"
+              : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
           }`}
         >
           <UserIcon className="h-4 w-4" />
@@ -284,8 +284,8 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("integrations")}
           className={`pb-3 px-1 transition border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeTab === "integrations"
-              ? "border-rose-500 text-rose-400 font-semibold"
-              : "border-transparent text-slate-400 hover:text-slate-200"
+              ? "border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-bold"
+              : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
           }`}
         >
           <Layers className="h-4 w-4" />
@@ -296,8 +296,8 @@ export default function SettingsPage() {
           onClick={() => setActiveTab("team")}
           className={`pb-3 px-1 transition border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeTab === "team"
-              ? "border-rose-500 text-rose-400 font-semibold"
-              : "border-transparent text-slate-400 hover:text-slate-200"
+              ? "border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-bold"
+              : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
           }`}
         >
           <Users className="h-4 w-4" />
@@ -308,17 +308,17 @@ export default function SettingsPage() {
       {/* TAB 1: WORKSPACE PREFERENCES */}
       {activeTab === "preferences" && (
         <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md max-w-xl space-y-5">
+          <div className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 backdrop-blur-md max-w-xl space-y-5 shadow-sm dark:shadow-none">
             <div>
-              <h2 className="text-xl font-bold text-slate-100">Workspace Configuration</h2>
-              <p className="text-slate-400 text-xs mt-1 leading-relaxed">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">Workspace Configuration</h2>
+              <p className="text-slate-500 dark:text-slate-400 text-xs mt-1 leading-relaxed">
                 Customize your shared tenant organization metadata. These values are visible to all members of this workspace.
               </p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                   Workspace Organization Name
                 </label>
                 <input
@@ -326,7 +326,7 @@ export default function SettingsPage() {
                   value={workspaceName}
                   onChange={(e) => setWorkspaceName(e.target.value)}
                   placeholder="App store"
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                 />
               </div>
 
@@ -334,7 +334,7 @@ export default function SettingsPage() {
                 type="button"
                 onClick={handleSaveWorkspaceName}
                 disabled={isSavingWorkspace}
-                className="w-full py-3 px-4 bg-rose-500 hover:bg-rose-600 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-500/20 disabled:opacity-50"
+                className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-indigo-500/20 disabled:opacity-50"
               >
                 {isSavingWorkspace ? "Saving Workspace Name..." : "Save Workspace Name"}
               </button>
@@ -347,55 +347,55 @@ export default function SettingsPage() {
       {activeTab === "profile" && (
         <div className="space-y-6 animate-in fade-in duration-200 max-w-xl">
           {/* Current Account Details Card */}
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md space-y-4">
-            <h2 className="text-xl font-bold text-slate-100">Current Account Details</h2>
+          <div className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 backdrop-blur-md space-y-4 shadow-sm dark:shadow-none">
+            <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">Current Account Details</h2>
 
             <div className="space-y-3">
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-850">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">DISPLAY NAME</p>
-                <p className="text-sm font-bold text-slate-100 mt-1">{displayName}</p>
+                <p className="text-sm font-bold text-slate-900 dark:text-slate-100 mt-1">{displayName}</p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-850">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">ACCOUNT EMAIL</p>
-                <p className="text-sm font-bold text-slate-100 mt-1">{session?.user?.email || "admin@loop.com"}</p>
+                <p className="text-sm font-bold text-slate-900 dark:text-slate-100 mt-1">{session?.user?.email || "admin@loop.com"}</p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-850">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">SYSTEM ROLE</p>
-                <p className="text-sm font-bold text-rose-400 uppercase mt-1">{userRole}</p>
+                <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase mt-1">{userRole}</p>
               </div>
             </div>
           </div>
 
           {/* Update Profile & Password Settings */}
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-md space-y-5">
-            <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
-              <UserIcon className="h-5 w-5 text-rose-400" />
+          <div className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 backdrop-blur-md space-y-5 shadow-sm dark:shadow-none">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+              <UserIcon className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
               Update Profile & Security Settings
             </h2>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                   Display Name
                 </label>
                 <input
                   type="text"
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                 />
               </div>
 
-              <div className="border-t border-slate-800/80 pt-4 space-y-4">
-                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Key className="h-3.5 w-3.5 text-rose-400" />
+              <div className="border-t border-slate-200 dark:border-slate-800/80 pt-4 space-y-4">
+                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <Key className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
                   Change Account Password
                 </h3>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                     Current Password
                   </label>
                   <input
@@ -403,12 +403,12 @@ export default function SettingsPage() {
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                    className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                     New Password
                   </label>
                   <input
@@ -416,12 +416,12 @@ export default function SettingsPage() {
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                    className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                     Confirm New Password
                   </label>
                   <input
@@ -429,7 +429,7 @@ export default function SettingsPage() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-rose-500/80 transition-colors"
+                    className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                   />
                 </div>
               </div>
@@ -442,7 +442,7 @@ export default function SettingsPage() {
                     handleChangePassword();
                   }
                 }}
-                className="w-full py-3 px-4 bg-rose-500 hover:bg-rose-600 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-rose-500/20"
+                className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-indigo-500/20"
               >
                 Save Profile & Security Changes
               </button>

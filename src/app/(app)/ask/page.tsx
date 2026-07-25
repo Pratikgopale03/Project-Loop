@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   MessageSquare, 
   Send, 
@@ -8,7 +8,9 @@ import {
   CheckCircle2, 
   AlertCircle,
   HelpCircle,
-  ArrowRight
+  ArrowRight,
+  ChevronDown,
+  ChevronRight
 } from "lucide-react";
 
 interface Citation {
@@ -31,6 +33,46 @@ export default function AskPage() {
   const [history, setHistory] = useState<ChatTurn[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [expandedCitations, setExpandedCitations] = useState<Record<number, boolean>>({});
+
+  // 💾 Load chat history from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("loop_chat_history");
+      if (saved) {
+        setHistory(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error("Failed to load chat history", e);
+    }
+  }, []);
+
+  // 💾 Save chat history to localStorage whenever updated
+  const saveHistory = (newHistory: ChatTurn[]) => {
+    setHistory(newHistory);
+    try {
+      localStorage.setItem("loop_chat_history", JSON.stringify(newHistory));
+    } catch (e) {
+      console.error("Failed to save chat history", e);
+    }
+  };
+
+  const clearChatHistory = () => {
+    setHistory([]);
+    setQuestion("");
+    setError("");
+    setExpandedCitations({});
+    try {
+      localStorage.removeItem("loop_chat_history");
+    } catch (e) {}
+  };
+
+  const toggleCitation = (index: number) => {
+    setExpandedCitations((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,10 +93,11 @@ export default function AskPage() {
       const newTurn: ChatTurn = {
         question,
         answer: data.answer,
-        citations: data.citations,
+        citations: data.citations || [],
       };
 
-      setHistory([newTurn, ...history]);
+      const updatedHistory = [newTurn, ...history];
+      saveHistory(updatedHistory);
       setQuestion("");
     } catch (err: any) {
       setError(err.message);
@@ -93,11 +136,7 @@ export default function AskPage() {
 
         <button
           type="button"
-          onClick={() => {
-            setHistory([]);
-            setQuestion("");
-            setError("");
-          }}
+          onClick={clearChatHistory}
           className="py-2 px-4 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl flex items-center gap-2 transition"
         >
           <span className="text-base leading-none text-indigo-600 dark:text-indigo-400">+</span> New Chat
@@ -146,66 +185,73 @@ export default function AskPage() {
           /* Answers History */
           <div className="space-y-6 flex-1 overflow-y-auto pr-1">
             {history.map((turn, index) => (
-              <div key={index} className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 space-y-4 shadow-sm dark:shadow-none backdrop-blur-sm">
-                {/* Question Header */}
-                <div className="flex gap-3 items-start border-b border-slate-100 dark:border-slate-800/80 pb-4">
-                  <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 mt-0.5">
-                    <MessageSquare className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold">Question Asked</span>
-                    <p className="text-slate-900 dark:text-slate-100 text-sm font-bold mt-0.5">"{turn.question}"</p>
+              <div key={index} className="space-y-4">
+                {/* User Prompt Bubble (Right Aligned) */}
+                <div className="flex justify-end">
+                  <div className="bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold text-xs py-3 px-5 rounded-2xl rounded-tr-none shadow-md max-w-lg leading-relaxed">
+                    {turn.question}
                   </div>
                 </div>
 
-                {/* Answer Narrative */}
-                <div className="space-y-2">
-                  <span className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold block">Grounded Answer</span>
-                  <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed whitespace-pre-wrap font-sans">
+                {/* AI Answer Bubble (Left Aligned) */}
+                <div className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-5 space-y-4 shadow-sm dark:shadow-none backdrop-blur-sm max-w-3xl">
+                  {/* Answer Narrative */}
+                  <p className="text-slate-800 dark:text-slate-200 text-xs leading-relaxed whitespace-pre-wrap font-sans">
                     {turn.answer}
                   </p>
-                </div>
 
-                {/* Citations / Evidence */}
-                {turn.citations.length > 0 && (
-                  <div className="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800/60">
-                    <span className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold flex items-center gap-1.5">
-                      <BookOpen className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
-                      Grounded Citations ({turn.citations.length})
-                    </span>
+                  {/* Collapsible Citations Toggle Arrow */}
+                  {turn.citations.length > 0 && (
+                    <div className="pt-2 border-t border-slate-100 dark:border-slate-800/60">
+                      <button
+                        type="button"
+                        onClick={() => toggleCitation(index)}
+                        className="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 text-xs font-bold transition"
+                      >
+                        {expandedCitations[index] ? (
+                          <ChevronDown className="h-3.5 w-3.5" />
+                        ) : (
+                          <ChevronRight className="h-3.5 w-3.5" />
+                        )}
+                        <span>Citations ({turn.citations.length} sources parsed)</span>
+                      </button>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {turn.citations.map((cite, idx) => (
-                        <div 
-                          key={cite.id}
-                          className="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 p-3.5 rounded-xl text-xs space-y-2 relative hover:border-indigo-400 dark:hover:border-slate-700 transition"
-                        >
-                          <div className="flex justify-between items-center text-[9px] text-slate-400 dark:text-slate-500 font-medium">
-                            <span className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-300 border border-slate-200 dark:border-indigo-500/20 font-bold">
-                              {cite.channel}
-                            </span>
-                            <span>[Feedback #{idx + 1}]</span>
-                          </div>
-                          
-                          <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed italic">
-                            "{cite.content.length > 140 ? cite.content.slice(0, 140) + "..." : cite.content}"
-                          </p>
+                      {/* Expanded Citation Cards */}
+                      {expandedCitations[index] && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 animate-in fade-in duration-200">
+                          {turn.citations.map((cite, idx) => (
+                            <div 
+                              key={cite.id}
+                              className="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 p-3 rounded-xl text-xs space-y-2 relative hover:border-indigo-400 dark:hover:border-slate-700 transition"
+                            >
+                              <div className="flex justify-between items-center text-[9px] text-slate-400 dark:text-slate-500 font-medium">
+                                <span className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-300 border border-slate-200 dark:border-indigo-500/20 font-bold">
+                                  {cite.channel}
+                                </span>
+                                <span>[Feedback #{idx + 1}]</span>
+                              </div>
+                              
+                              <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed italic">
+                                "{cite.content.length > 140 ? cite.content.slice(0, 140) + "..." : cite.content}"
+                              </p>
 
-                          <div className="flex justify-between items-center pt-1 text-[9px]">
-                            {cite.customerLabel && (
-                              <span className="text-indigo-600 dark:text-violet-400 font-bold truncate max-w-[120px]">
-                                @ {cite.customerLabel}
-                              </span>
-                            )}
-                            <span className={`font-bold tracking-wider px-1.5 rounded uppercase ${getSentimentStyle(cite.sentiment)}`}>
-                              {cite.sentiment}
-                            </span>
-                          </div>
+                              <div className="flex justify-between items-center pt-1 text-[9px]">
+                                {cite.customerLabel && (
+                                  <span className="text-indigo-600 dark:text-violet-400 font-bold truncate max-w-[120px]">
+                                    @ {cite.customerLabel}
+                                  </span>
+                                )}
+                                <span className={`font-bold tracking-wider px-1.5 rounded uppercase ${getSentimentStyle(cite.sentiment)}`}>
+                                  {cite.sentiment}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
+                      )}
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             ))}
           </div>
